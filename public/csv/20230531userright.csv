@@ -1,0 +1,13 @@
+﻿admin,admin,1000000,datd4firm,dbcarbon,admin,1st version
+super,admin,1000000,topsecret,dbcarbon,admin,1st version
+developer,fullright,100000,data4firm,dbcarbon,fullright,1st version
+api,fullright,50000,data4firm,dbcarbon,fullright,1st version
+management,audit,20000,credential4dept,dbcarbon,audit,1st version
+staff,run,10000,data4firm,dbcarbon,delete,1st version
+tester,run,5000,data4firm,,query,1st version
+invesgator,run,50000,worktodo4dept,dbcarbon,delete,1st version
+methodor,run,100000,worktodo4dept,dbcarbon,delete,1st version
+processer,run,100000,worktodo4dept,dbcarbon,delete,1st version
+collecter,run,50000,worktodo4dept,dbcarbon,delete,1st version
+applicant,read,500000,limit,,query,1st version
+receiver,read,10000,open,,query,1st version

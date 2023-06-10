@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- <script src="/javascripts/jquery-3.4.1.js"></script> -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+body {
+background-color: rgb(205, 226, 253);
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+#tablefy{
+    display: inline-block;
+  flex-direction:row;
+	 justify-content: flex-start;
+     align-items:left;
+     margin:10px
+}
+#bulletin {background:#def3f8;}
+#worktodo {background:#f8e8c5;}
+.navbar{background:#cff8c5;}
+.nav-link, .navbar-brand{color: #f4f4f4;cursor:pointer;}
+.nav-link{margin-right:1em !important;}
+.nav-link:hover{background: #f4f4f4;color:#f97300;}
+.navbar-collapse{justify-content:flex-end;}
+.navbar-toggler{background:#fff !important;}
+</style>
+
+  <title>內部系統--資料庫維管入口</title>
+  </head>
+  <body>
+    <h5>去中心化碳權認證系統</h5>
+    <h4>資料庫各資料表維管入口</h4>
+        <div id="show_div">
+          <div class="row" align="justify">
+            <div class="col-lg-9 col-md-6 col-sm-12">
+                <content1></content1>
+          </div>
+          </div>
+        </div>
+      <template id="content1UI">
+            <nav aria-label="...">
+        <div class="row" id="tablefy" v-for="table of tables" :key="table._id">
+          <div class="col-lg-3 col-md-6 col-sm-12">
+          <form  :action="table.route" method="get">
+            <input type="hidden" name="statusreport" value="由資料維管按鈕進入本頁">
+            <input type="submit" :value="table.label" class="btn btn-info">
+          </form>
+</div>
+</div>
+</nav>
+</template>
+<!-- Vue CDN-->
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+<script>
+ Vue.component("content1",{
+      props:{},
+      data(){
+        return{
+      tables:JSON.parse(decodeURIComponent('<%=tables%>')),
+      }
+      },
+      mounted:function(){
+
+      },
+      methods:{
+
+      },
+    template:"#content1UI"
+  });
+  new Vue({
+        el:'#show_div',
+        data:{
+          testdata:'有執行到此。。。。'
+        },
+        /* computed:{
+
+        },
+        watch:{
+
+        },
+        filters:{
+
+        },
+        mixins:[
+
+        ],
+        template:" ",
+
+        components:{
+          "bander":bander,
+          "outputer":outputer,
+          "inputer":inputer
+        },*/
+        beforeCreate:function(){
+          console.log("before create...")
+        },created:function(){
+          console.log("created...")
+        },
+        beforeMount:function(){
+          console.log("before mount...")
+        },
+        mounted:function(){
+          console.log("mounted...")
+        },
+        beforeUpdate:function(){
+          console.log("before update...")
+        },
+        updated:function(){
+          console.log("updated...")
+        },
+        beforeDestroy:function(){
+
+        }
+    })
+</script>
+</body>
+</html>

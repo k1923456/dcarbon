@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="/javascripts/jquery-3.4.1.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <style type="text/css">
 body {
   background-color: #d6d6d3;
@@ -52,7 +52,7 @@ body {
             </li>
           </ul>
           <span class="navbar-text">
-            {{statusreport}}
+            <!--{{statusreport}}-->
           </span>
         </div>
       </nav>
@@ -69,22 +69,40 @@ body {
             <input type="text" name="_id" class="form-control" id="formGroupExampleInput" :value="case._id">
 
               <label for="formGroupExampleInput2">{{items.item0}}</label>
-              <input type="text" name="a05project" class="form-control" id="formGroupExampleInput0" :value="case.a05project">
+              <input type="text" :name="name.name0" class="form-control" id="formGroupExampleInput0" :value="case.a05apllicantID">
 
               <label for="formGroupExampleInput2">{{items.item1}}</label>
-              <input type="text" name="a10database" class="form-control" id="formGroupExampleInput1" :value="case.a10database">
+              <input type="text" :name="name.name1" class="form-control" id="formGroupExampleInput1" :value="case.a10activityID">
 
               <label for="formGroupExampleInput2">{{items.item2}}</label>
-              <input type="text" name="a15model" class="form-control" id="formGroupExampleInput2" :value="case.a15model">
+              <input type="text" :name="names.name2" class="form-control" id="formGroupExampleInput2" :value="case.a15casename">
 
               <label for="formGroupExampleInput2">{{items.item3}}</label>
-              <input type="text" name="a20filed" class="form-control" id="formGroupExampleInput3" :value="case.a20field">
+              <input type="text" :name="names.name3" class="form-control" id="formGroupExampleInput3" :value="case.a20caseaddress">
 
               <label for="formGroupExampleInput2">{{items.item4}}</label>
-              <input type="text" name="a25code" class="form-control" id="formGroupExampleInput4" :value="case.a25code">
+              <input type="text" :name="names.name4" class="form-control" id="formGroupExampleInput4" :value="case.a25caseGPS">
 
               <label for="formGroupExampleInput2">{{items.item5}}</label>
-              <input type="text" name="a30mean" class="form-control" id="formGroupExampleInput5" :value="case.a30mean">
+              <input type="text" :name="names.name5" class="form-control" id="formGroupExampleInput5" :value="case.a30caseunit">
+
+              <label for="formGroupExampleInput2">{{items.item6}}</label>
+              <input type="text" :name="names.name6" class="form-control" id="formGroupExampleInput6" :value="case.a35scale">
+
+              <label for="formGroupExampleInput2">{{items.item7}}</label>
+              <input type="text" :name="names.name7" class="form-control" id="formGroupExampleInput7" :value="case.a40loyalistID">
+
+              <label for="formGroupExampleInput2">{{items.item8}}</label>
+              <input type="text" :name="names.name8" class="form-control" id="formGroupExampleInput8" :value="case.a45progressID">
+
+              <label for="formGroupExampleInput2">{{items.item9}}</label>
+              <input type="text" :name="names.name9" class="form-control" id="formGroupExampleInput9" :value="case.a50updatetime>
+
+              <label for="formGroupExampleInput2">{{items.item10}}</label>
+              <input type="text" :name="names.name10" class="form-control" id="formGroupExampleInput10" :value="case.a55pass">
+
+              <label for="formGroupExampleInput2">{{items.item11}}</label>
+              <input type="text" :name="names.name11" class="form-control" id="formGroupExampleInput11" :value="case.a60right>
 
               <input type="hidden" name="statusreport" class="form-control" id="msg1" value="由修正case後進入本頁">
 
@@ -110,7 +128,7 @@ Vue.component("bander",{
         lastpage:"回前頁",
         edit1:"修正1筆",
         editbatch:"修正多筆",
-        statusreport:'<%- statusreport %>'
+        //statusreport:'<%- statusreport %>'
       }
     },
     methods:{
@@ -125,15 +143,34 @@ Vue.component("bander",{
         card_title:"",
         card_subtitle:"請修正以下各項資料:",
         items:{
-            item:"ID",
-            item0:"適用的專案",
-            item1:"適用的資料庫",
-            item2:"適用的model或namespace",
-            item3:"適用的欄位或群組",
-            item4:"英文代碼或中文簡稱",
-            item5:"類別或意涵",
-            item99:"特別註記"
+          item0:"申請人代碼",
+          item1:"申請活動代碼",
+          item2:"申請案場名稱",
+          item3:"申請案場地址",
+          item4:"申請案場中心點GPS",
+          item5:"申請案規模計算單位",
+          item6:"申請案規模數值",
+          item7:"申請案查證人ID列舉",
+          item8:"申請案認驗證最新進度",
+          item9:"進度更新時間",
+          item10:"申請案是否通過",
+          item11:"申請案獲得之碳權噸數",
+          item99:"特別註記"
       },
+        names:{
+          name0:"a05apllicantID",
+          name1:"a10activityID",
+          name2:"a15casename",
+          name3:"a20caseaddress",
+          name4:"a25caseGPS",
+          name5:"a30caseunit",
+          name6:"a35scale",
+          name7:"a40loyalistID",
+          name8:"a45progressID",
+          name9:"a50updatetime",
+          name10:"a55pass",
+          name11:"a60right"
+        },
       case:JSON.parse(decodeURIComponent('<%=case%>')),
       inputerUIkey:0
 

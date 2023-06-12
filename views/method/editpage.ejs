@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="/javascripts/jquery-3.4.1.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <style type="text/css">
 body {
   background-color: #d6d6d3;
@@ -52,7 +52,7 @@ body {
             </li>
           </ul>
           <span class="navbar-text">
-            {{statusreport}}
+            <!--{{statusreport}}-->
           </span>
         </div>
       </nav>
@@ -68,23 +68,29 @@ body {
             <label for="formGroupExampleInput2">{{items.item}}</label>
             <input type="text" name="_id" class="form-control" id="formGroupExampleInput" :value="method._id">
 
-              <label for="formGroupExampleInput2">{{items.item0}}</label>
-              <input type="text" name="a05project" class="form-control" id="formGroupExampleInput0" :value="method.a05project">
+            <label for="formGroupExampleInput2">{{items.item0}}</label>
+            <input type="text" :name="names.name0" class="form-control" id="formGroupExampleInput0" :value="method.a05activityID">
 
-              <label for="formGroupExampleInput2">{{items.item1}}</label>
-              <input type="text" name="a10database" class="form-control" id="formGroupExampleInput1" :value="method.a10database">
+            <label for="formGroupExampleInput2">{{items.item1}}</label>
+            <input type="text" :name="names.name1" class="form-control" id="formGroupExampleInput1" :value="method.a10loyalistID">
 
-              <label for="formGroupExampleInput2">{{items.item2}}</label>
-              <input type="text" name="a15model" class="form-control" id="formGroupExampleInput2" :value="method.a15model">
+            <label for="formGroupExampleInput2">{{items.item2}}</label>
+            <input type="text" :name="names.name2" class="form-control" id="formGroupExampleInput2" :value="method.a15subact_old">
 
-              <label for="formGroupExampleInput2">{{items.item3}}</label>
-              <input type="text" name="a20filed" class="form-control" id="formGroupExampleInput3" :value="method.a20field">
+            <label for="formGroupExampleInput2">{{items.item3}}</label>
+            <input type="text" :name="names.name3" class="form-control" id="formGroupExampleInput3" :value="method.a20subact_new">
 
-              <label for="formGroupExampleInput2">{{items.item4}}</label>
-              <input type="text" name="a25code" class="form-control" id="formGroupExampleInput4" :value="method.a25code">
+            <label for="formGroupExampleInput2">{{items.item4}}</label>
+            <input type="text" :name="names.name4" class="form-control" id="formGroupExampleInput4" :value="method.a25different">
 
-              <label for="formGroupExampleInput2">{{items.item5}}</label>
-              <input type="text" name="a30mean" class="form-control" id="formGroupExampleInput5" :value="method.a30mean">
+            <label for="formGroupExampleInput2">{{items.item5}}</label>
+            <input type="text" :name="names.name5" class="form-control" id="formGroupExampleInput5" :value="method.a30baseline">
+
+            <label for="formGroupExampleInput2">{{items.item6}}</label>
+            <input type="text" :name="names.name6" class="form-control" id="formGroupExampleInput6" :value="method.a35dataneed">
+
+            <label for="formGroupExampleInput2">{{items.item7}}</label>
+            <input type="text" :name="names.name7" class="form-control" id="formGroupExampleInput7" :value="method.a40formula">
 
               <input type="hidden" name="statusreport" class="form-control" id="msg1" value="由修正method後進入本頁">
 
@@ -110,7 +116,7 @@ Vue.component("bander",{
         lastpage:"回前頁",
         edit1:"修正1筆",
         editbatch:"修正多筆",
-        statusreport:'<%- statusreport %>'
+        //statusreport:'<%- statusreport %>'
       }
     },
     methods:{
@@ -125,15 +131,26 @@ Vue.component("bander",{
         card_title:"",
         card_subtitle:"請修正以下各項資料:",
         items:{
-            item:"ID",
-            item0:"適用的專案",
-            item1:"適用的資料庫",
-            item2:"適用的model或namespace",
-            item3:"適用的欄位或群組",
-            item4:"英文代碼或中文簡稱",
-            item5:"類別或意涵",
-            item99:"特別註記"
-      },
+          item0:"對應之活動代碼",
+          item1:"方法建構士ID",
+          item2:"減碳或增匯前細部活動ID列舉",
+          item3:"減碳或增匯細部活動ID列舉",
+          item4:"減碳或增匯前後細部活動差異說明",
+          item5:"減碳或增匯前細部活動基線資料名稱列舉",
+          item6:"減碳或增匯細部佐證資料名稱列舉",
+          item7:"減碳或增匯數量計算方法",
+          item99:"特別註記"
+          },
+        names:{
+          name0:"a05activityID",
+          name1:"a10loyalistID",
+          name2:"a15subact_old",
+          name3:"a20subact_new",
+          name4:"a25different",
+          name5:"a30baseline",
+          name6:"a35dataneed",
+          name7:"a40formula"
+            },
       method:JSON.parse(decodeURIComponent('<%=method%>')),
       inputerUIkey:0
 

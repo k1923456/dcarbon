@@ -39,6 +39,7 @@ async inputpage(ctx, next) {
     if(statusreport===undefined){
         statusreport="status未傳成功!"
     }
+    var status=0;
     var termlist;
     await Term.find({a15model:"loyalist"}).then(async terms=>{
         console.log("type of terms:"+typeof(terms));

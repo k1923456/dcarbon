@@ -1,6 +1,7 @@
 //載入相對應的model
 const Case = require('../models/index').case;
 const Term = require('../models/index').term;
+const Applicant = require('../models/index').applicant;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
@@ -35,12 +36,49 @@ async list(ctx,next){
 async inputpage(ctx, next) {
     var {statusreport}=ctx.request.body;
     console.log("gotten query:"+statusreport);
-    if(statusreport===undefined){
-        statusreport="status未傳成功!"
-    }
-	await ctx.render("case/inputpage",{
-		statusreport:ctx.request.body.statusreport
-	})
+    var termlist;
+    var applicantlist;
+    var status=0;
+    await Term.find({a15model:"product"}).then(async terms=>{
+        console.log("type of terms:"+typeof(terms));
+        console.log("type of 1st term:"+typeof(terms[0]));
+        console.log("1st term:"+terms[0])
+        console.log("No. of term:"+terms.length)
+        termlist=encodeURIComponent(JSON.stringify(terms));
+        console.log("type of termlist:"+typeof(termlist));
+      })
+    .catch(err=>{
+        console.log("Term.find({}) failed !!");
+        console.log(err)
+    })
+    await Applicant.find().then(async applicants=>{
+      console.log("type of applicants:"+typeof(applicants));
+      console.log("type of 1st applicant:"+typeof(applicants[0]));
+      console.log("1st applicant:"+applicants[0])
+      console.log("No. of applicant:"+applicants.length)
+      applicantlist=encodeURIComponent(JSON.stringify(applicants));
+      console.log("type of applicantlist:"+typeof(applicantlist));
+      if(statusreport===undefined){
+          statusreport="status未傳成功!"
+      }
+      if(status=="0"){
+      await ctx.render("case/inputpage",{
+          statusreport:ctx.request.body.statusreport,
+          termlist,
+          applicantlist
+      })
+      }else{
+          await ctx.render("case/inputpage1",{
+              statusreport:ctx.request.body.statusreport,
+              termlist,
+              applicantlist
+          })
+      }
+    })
+  .catch(err=>{
+      console.log("Applicant.find({}) failed !!");
+      console.log(err)
+  })
 },
 //到申請人新增申請案頁
 async inputpage1(ctx, next) {

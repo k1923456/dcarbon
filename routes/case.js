@@ -38,7 +38,7 @@ router.post('/add', async (ctx, next)=> {
 //寫入申請人填寫資料
 router.post('/addbyapplicant', async (ctx, next)=> {
 	console.log(ctx.request.body);
-	await caseController.create(ctx)
+	await caseController.create1(ctx)
 });
 //依參數id刪除資料
 router.get('/delete/:id', async (ctx, next)=> {

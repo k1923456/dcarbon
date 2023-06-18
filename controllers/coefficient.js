@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found coefficients:"+coefficients);
         console.log("type of coefficients:"+typeof(coefficients));
         console.log("type of 1st coefficient:"+typeof(coefficients[0]));
-        //console.log("1st coefficient:"+coefficients[0].a30mean)
+        //console.log("1st coefficient:"+coefficients[0].a10data)
         console.log("No. of coefficient:"+coefficients.length)
         let coefficientlist=encodeURIComponent(JSON.stringify(coefficients));
         console.log("type of coefficients:"+typeof(coefficientlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_coefficient = new Coefficient(ctx.request.body);
-    console.log("got new_coefficient:"+new_coefficient.a30mean);
+    console.log("got new_coefficient:"+new_coefficient.a10data);
     await new_coefficient.save()
     .then(()=>{
         console.log("Saving new_coefficient....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_coefficient=>{
                 await new_coefficient.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_coefficient.a30mean)
+                    console.log("Saved document:"+new_coefficient.a10data)
                     })
                 .catch((err)=>{
                     console.log("Coefficient.save() failed !!")

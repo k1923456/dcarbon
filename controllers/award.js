@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found awards:"+awards);
         console.log("type of awards:"+typeof(awards));
         console.log("type of 1st award:"+typeof(awards[0]));
-        //console.log("1st award:"+awards[0].a30mean)
+        //console.log("1st award:"+awards[0].a15point)
         console.log("No. of award:"+awards.length)
         let awardlist=encodeURIComponent(JSON.stringify(awards));
         console.log("type of awards:"+typeof(awardlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_award = new Award(ctx.request.body);
-    console.log("got new_award:"+new_award.a30mean);
+    console.log("got new_award:"+new_award.a15point);
     await new_award.save()
     .then(()=>{
         console.log("Saving new_award....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_award=>{
                 await new_award.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_award.a30mean)
+                    console.log("Saved document:"+new_award.a15point)
                     })
                 .catch((err)=>{
                     console.log("Award.save() failed !!")

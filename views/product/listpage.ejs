@@ -129,19 +129,17 @@ background-color: rgb(205, 226, 253);
         <table border="1" class="table table-striped">
             <thead>
             <tr>
-                <th>{{items.item0}}</th>
-                <th>{{items.item1}}</th>
-                <th>{{items.item2}}</th>
-                <th>{{items.item5}}</th>
+              <th>{{items.item0}}</th>
+              <th>{{items.item2}}</th>
+              <th>{{items.item3}}</th>
               <!-- <th>特別註記</th> -->
             </tr>
             </thead>
             <tbody id="productlist">
               <!-- <tr v-for="product of productshow" :key="product._id"> -->
                 <tr v-for="product of productShow" :key="product._id">
-                <td>{{product.a05HScode}}</td>
+                <td>{{product.a03tempcode}}</td>
                 <td>{{product.a10part}}</td>
-                <td>{{product.a15chapter}}</td>
                 <td>{{product.a30itemCh}}</td>
                 <!-- statusreport="由已擷取資料組清單頁進入本頁"> -->
 
@@ -243,13 +241,11 @@ background-color: rgb(205, 226, 253);
           statusreport:'<%- JSON.stringify(statusreport) %>',
           productlist:JSON.parse(decodeURIComponent('<%=productlist%>')),
         items:{
-          item0:"2017版HS碼",
-          item1:"大類名稱",
-          item2:"章名稱",
-          item3:"節名稱",
-          item4:"目名稱",
-          item5:"款中文名稱",
-          item6:"款英文名稱",
+          item0:"自訂編碼",
+          item1:"產業類型",
+          item2:"大類名稱",
+          item3:"章中文名稱",
+          item4:"章英文名稱",
           item99:"特別註記"
             }
         }

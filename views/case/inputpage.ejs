@@ -108,16 +108,10 @@ body {
               <label for="formGroupExampleInput2">{{items.item9}}</label>
               <input type="text" :name="names.name9" class="form-control" id="formGroupExampleInput9" :placeholder="holders.holder9">
 
-              <label for="formGroupExampleInput2">{{items.item10}}</label>
-              <input type="text" :name="names.name10" class="form-control" id="formGroupExampleInput10" :placeholder="holders.holder10">
-
-              <label for="formGroupExampleInput2">{{items.item11}}</label>
-              <input type="text" :name="names.name11" class="form-control" id="formGroupExampleInput11" :placeholder="holders.holder11">
-
               <label for="formGroupExampleInput">{{items.item99}}</label>
               <input type="text" name="a99footnote" class="form-control" id="formGroupExampleInput99" :placeholder="holders.holder99">
 
-              <input type="hidden" name="statusreport" class="form-control" id="msg1" value="由單筆activity輸入後進入本頁">
+              <input type="hidden" name="statusreport" class="form-control" id="msg1" value="由單筆case輸入後進入本頁">
 
               <input type="submit" id="button1" value="確定送出" class="btn btn-info">
             </div>
@@ -162,14 +156,12 @@ Vue.component("bander",{
           item5:"申請案規模計算單位",
           item6:"申請案規模數值",
           item7:"申請案查證人ID列舉",
-          item8:"申請案認驗證最新進度",
-          item9:"進度更新時間",
-          item10:"申請案是否通過",
-          item11:"申請案獲得之碳權噸數",
+          item8:"申請案是否通過",
+          item9:"申請案獲得之碳權噸數",
           item99:"特別註記"
       },
         names:{
-          name0:"a05apllicantID",
+          name0:"a05applicantID",
           name1:"a10activityID",
           name2:"a15casename",
           name3:"a20caseaddress",
@@ -177,10 +169,8 @@ Vue.component("bander",{
           name5:"a30caseunit",
           name6:"a35scale",
           name7:"a40loyalistID",
-          name8:"a45progressID",
-          name9:"a50updatetime",
-          name10:"a55pass",
-          name11:"a60right"
+          name8:"a55pass",
+          name9:"a60right"
         },
         holders:{
           holder0:"物件識別碼,",
@@ -191,10 +181,8 @@ Vue.component("bander",{
           holder5:"字串,",
           holder6:"數字,",
           holder7:"陣列,",
-          holder8:"物件識別碼,由progerss選取",
-          holder9:"日期時間,",
-          holder10:"邏輯值,true, false",
-          holder11:"數字,",
+          holder8:"邏輯值,true, false",
+          holder9:"數字,",
           holder99:"字串"
         },
         termlist:JSON.parse(decodeURIComponent('<%=termlist%>')),

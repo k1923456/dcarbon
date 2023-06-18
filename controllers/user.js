@@ -11,7 +11,7 @@ async list(ctx,next){
         //console.log("found users:"+users);
         console.log("type of users:"+typeof(users));
         console.log("type of 1st user:"+typeof(users[0]));
-        //console.log("1st user:"+users[0].a30mean)
+        //console.log("1st user:"+users[0].a15account)
         console.log("No. of user:"+users.length)
         let userlist=encodeURIComponent(JSON.stringify(users));
         console.log("type of users:"+typeof(userlist));
@@ -163,7 +163,7 @@ async batchinput(ctx, next){
         let saveone=(async new_user=>{
                 await new_user.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_user.a30mean)
+                    console.log("Saved document:"+new_user.a15account)
                     })
                 .catch((err)=>{
                     console.log("User.save() failed !!")

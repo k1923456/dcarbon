@@ -11,7 +11,7 @@ async list(ctx,next){
         //console.log("found loyalists:"+loyalists);
         console.log("type of loyalists:"+typeof(loyalists));
         console.log("type of 1st loyalist:"+typeof(loyalists[0]));
-        //console.log("1st loyalist:"+loyalists[0].a30mean)
+        //console.log("1st loyalist:"+loyalists[0].a10firstname)
         console.log("No. of loyalist:"+loyalists.length)
         let loyalistlist=encodeURIComponent(JSON.stringify(loyalists));
         console.log("type of loyalists:"+typeof(loyalistlist));
@@ -164,7 +164,7 @@ async batchinput(ctx, next){
         let saveone=(async new_loyalist=>{
                 await new_loyalist.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_loyalist.a30mean)
+                    console.log("Saved document:"+new_loyalist.a10firstname)
                     })
                 .catch((err)=>{
                     console.log("Loyalist.save() failed !!")

@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found subacts:"+subacts);
         console.log("type of subacts:"+typeof(subacts));
         console.log("type of 1st subact:"+typeof(subacts[0]));
-        //console.log("1st subact:"+subacts[0].a30mean)
+        //console.log("1st subact:"+subacts[0].a15nickname)
         console.log("No. of subact:"+subacts.length)
         let subactlist=encodeURIComponent(JSON.stringify(subacts));
         console.log("type of subacts:"+typeof(subactlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_subact = new Subact(ctx.request.body);
-    console.log("got new_subact:"+new_subact.a30mean);
+    console.log("got new_subact:"+new_subact.a15nickname);
     await new_subact.save()
     .then(()=>{
         console.log("Saving new_subact....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_subact=>{
                 await new_subact.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_subact.a30mean)
+                    console.log("Saved document:"+new_subact.a15nickname)
                     })
                 .catch((err)=>{
                     console.log("Subact.save() failed !!")

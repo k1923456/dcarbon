@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found dataneeds:"+dataneeds);
         console.log("type of dataneeds:"+typeof(dataneeds));
         console.log("type of 1st dataneed:"+typeof(dataneeds[0]));
-        //console.log("1st dataneed:"+dataneeds[0].a30mean)
+        //console.log("1st dataneed:"+dataneeds[0].a10datatype)
         console.log("No. of dataneed:"+dataneeds.length)
         let dataneedlist=encodeURIComponent(JSON.stringify(dataneeds));
         console.log("type of dataneeds:"+typeof(dataneedlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_dataneed = new Dataneed(ctx.request.body);
-    console.log("got new_dataneed:"+new_dataneed.a30mean);
+    console.log("got new_dataneed:"+new_dataneed.a10datatype);
     await new_dataneed.save()
     .then(()=>{
         console.log("Saving new_dataneed....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_dataneed=>{
                 await new_dataneed.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_dataneed.a30mean)
+                    console.log("Saved document:"+new_dataneed.a10datatype)
                     })
                 .catch((err)=>{
                     console.log("Dataneed.save() failed !!")

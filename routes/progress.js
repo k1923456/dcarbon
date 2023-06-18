@@ -31,6 +31,10 @@ router.post('/add', async (ctx, next)=> {
 	console.log(ctx.request.body);
 	await progressController.create(ctx)
 });
+//由API寫入一筆資料
+router.get('/add0', async (ctx, next)=> {
+	await progressController.create0(ctx)
+});
 //依參數id刪除資料
 router.get('/delete/:id', async (ctx, next)=> {
 	await progressController.destroy(ctx)

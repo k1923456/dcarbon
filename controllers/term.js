@@ -83,7 +83,7 @@ async create(ctx,next){
     await new_term.save()
     .then(()=>{
         console.log("Saving new_term....");
-    statusreport="儲存單筆客戶資料後進入本頁";
+    statusreport="儲存單筆term資料後進入本頁";
     ctx.redirect("/base4dcarbon/term/?statusreport="+statusreport)
     })
     .catch((err)=>{

@@ -1,0 +1,96 @@
+﻿101,goods,part01,活動物,live animals,temp
+102,goods,part01,肉及食用雜碎,meat & edible meat offal,temp
+103,goods,part01,魚類、甲殼類、軟體類及其他水產無脊椎動物,fish & crustaceans,temp
+104,goods,part01,乳製品；禽蛋；天然蜜；未列名食用動物產品,"dairy, eggs, honey, & ed. Products",temp
+105,goods,part01,未列名動物產品,products of animal origin,temp
+106,goods,part02,活樹及其他植物；球莖、根及類似品；切花及裝飾用葉,live trees & other plants,temp
+107,goods,part02,食用蔬菜及部份根菜與塊莖菜類,edible vegetables,temp
+108,goods,part02,食用果實及堅果；柑橘屬果實或甜瓜之外皮,"ed. fruits & nuts, peel of citrus/melons",temp
+109,goods,part02,咖啡、茶、馬黛茶及香料,"coffee, tea, mate & spices",temp
+110,goods,part02,穀類,cereals,temp
+111,goods,part02,製粉工業產品；麥芽；澱粉；菊糖；麵筋,milling industry products,temp
+112,goods,part02,油料種子及含油質果實；雜項穀粒、種子及果實；工業用或藥用植物；芻草及飼料,oil seeds/misc. grains/med. plants/straw,temp
+113,goods,part02,蟲漆；植物膠、樹脂、其他植物汁液及萃取物,"lac, gums, resins, etc.",temp
+114,goods,part02,編結用植物性材料；未列名植物產品,vegetable plaiting materials,temp
+115,goods,part03,動植物油脂及其分解物；調製食用油脂；動植物蠟,"animal or vegetable fats, oils & waxes",temp
+116,goods,part04,肉、魚或甲殼、軟體或其他水產無脊椎動物等之調製品,"ed. prep. of meat, fish, crustaceans, etc",temp
+117,goods,part04,糖及糖果,sugars & sugar confectionery,temp
+118,goods,part04,可可及可可製品,cocoa & cocoa preparations,temp
+119,goods,part04,穀類、粉、澱粉或奶之調製食品；糕餅類食品,"preps. of cereals, flour, starch or milk",temp
+120,goods,part04,蔬菜、果實、堅果或植物其他部份之調製品,"preps of vegs, fruits, nuts, etc.",temp
+121,goods,part04,雜項調製食品,misc. edible preparations,temp
+122,goods,part04,飲料、酒類及醋,"beverages, spirits & vinegar",temp
+123,goods,part04,食品工業產製過程之殘渣及廢品；調製動物飼料,"residues from food industries, animal feed",temp
+124,goods,part04,菸（包括菸葉及菸類）及菸葉代用品,tobacco & manuf. tobacco substitutes,temp
+125,goods,part05,鹽；硫磺；土及石料；塗牆料，石灰及水泥,"salt, sulphur, earth & stone, lime & cement",temp
+126,goods,part05,礦石、熔渣及礦灰,ores slag & ash,temp
+127,goods,part05,礦物燃料、礦油及其蒸餾產品；含瀝青物質；研蠟,"mineral fuels, oils, waxes & bituminous sub",temp
+128,goods,part06,無機化學品；貴金屬、稀土金屬、放射性元素及其同位素之有機及無機化合物,"inorganic chem, org/inorg compounds of precious metals, isotopes",temp
+129,goods,part06,有機化學產品,organic chemicals,temp
+130,goods,part06,醫藥品,pharmaceutical products,temp
+131,goods,part06,肥料,fertilizers,temp
+132,goods,part06,鞣革或染色用萃取物；鞣酸及其衍生物；染料、顏料及其他著色料；漆類及凡立水；油灰及其他灰泥；墨類,"tanning or dyeing extracts, dyes, pigments, paints & varnishes, putty, & inks",temp
+133,goods,part06,精油及樹脂狀物質；香水、化妝品或盥洗用品,"oils & resinoids, perfumery, cosmetic or toilet preparations",temp
+134,goods,part06,肥皂，有機界面活性劑，洗滌劑，潤滑劑，人造蠟，調製蠟，擦光或除垢劑，蠟蠋及類似品，塑型用軟膏，（牙科用蠟）以及石膏為基料之牙科用劑,"soaps, waxes, scouring products, candles, modeling pastes, dental waxes",temp
+135,goods,part06,蛋白狀物質；改質澱粉；膠；酵素,"albuminoidal sub, starches, glues, enzymes",temp
+136,goods,part06,炸藥；煙火品；火柴；引火合金；可燃製品,"explosives, matches, pyrotechnic products",temp
+137,goods,part06,感光或電影用品,photographic or cinematographic goods,temp
+138,goods,part06,雜項化學產品,miscellaneous chemical products,temp
+139,goods,part07,塑膠及其製品,plastics & articles thereof,temp
+140,goods,part07,橡膠及其膠品,rubbers & articles thereof,temp
+141,goods,part08,生皮（毛皮除外）及皮革,raw hides & skins & leather,temp
+142,goods,part08,皮革製品；鞍具及輓具；旅行用物品、手提袋及類似容器；動物腸線（蠶腸線除外）製品,"articles of leather, saddlery & harness, travel goods, handbags, articles of gut",temp
+143,goods,part08,毛皮與人造毛皮及其製品,"furskins & artificial fur, manufactures",temp
+144,goods,part09,木及木製品；木炭,"wood & articles of wood, wood charcoal",temp
+145,goods,part09,軟木及軟木製品,cork & articles of cork,temp
+146,goods,part09,草及其他編結材料之編結品；編籃及柳條編結品,"manu. of straw, esparto, or other plaiting materials, basketware and wickerwork",temp
+147,goods,part10,木漿或其他纖維素材料之紙漿；回收（廢料及碎屑）紙或紙板,"pulp of wood, waste & scrap of paper",temp
+148,goods,part10,紙及紙板；紙漿、紙或紙板之製品,"paper & paperboard, articles of paper pulp",temp
+149,goods,part10,書籍，新聞報紙，圖書及其他印刷工業產品；手寫稿、打字稿及設計圖樣,"printed books, newspapers, pictures, manuscripts, typescripts & plans",temp
+150,goods,part11,絲,"silk, inc. yarns & woven fabrics thereof",temp
+151,goods,part11,羊毛，動物粗細毛；馬毛紗及其梭織物,"wool & fine or coarse animal hair, inc. yarns & woven fabrics thereof",temp
+152,goods,part11,棉花,"cotton, inc. yarns & woven fabrics thereof",temp
+153,goods,part11,其他植物紡織纖維；紙紗及紙紗梭織物,"veg. textile fibers nesoi, yarns & woven etc.",temp
+154,goods,part11,人造纖維絲,"man-made filaments, inc. yarns & woven etc.",temp
+155,goods,part11,人造纖維棉,"man-made staple fibers, inc. yarns etc.",temp
+156,goods,part11,填充用材料、氈呢、不織布；特種紗、撚線、繩、索、纜及其製品,"wadding, felt & nonwovens, special yarns, twine, cordage, ropes & cables & articles",temp
+157,goods,part11,地毯及其他紡織材料覆地物,carpets & other textile floor coverings,temp
+158,goods,part11,特殊梭織物；簇絨織物；花邊織物；掛毯；裝飾織物；刺繡織物,"special woven fabrics, tufted textiles, lace",temp
+159,goods,part11,浸漬、塗佈、被覆或黏合之紡織物；工業用紡織物,"impregnated, coated, covered, or laminated textile prod, textile prod for industrial use",temp
+160,goods,part11,針織品或鉤針織品,knitted or crocheted fabrics,temp
+161,goods,part11,針織或鉤針織之衣著及服飾附屬品,articles of apparel & clothing accessories-knitted or crocheted,temp
+162,goods,part12,非針織及非鉤針織之衣著及服飾附屬品,articles of apparel & clothing accessories-not knitted or crocheted,temp
+163,goods,part12,其他製成紡織品；組合品；不堪用衣著及不堪用紡織品；破布,"made-up textile articles nesoi, needlecraft sets, worn clothing, rags",temp
+164,goods,part12,鞋靴、綁腿及類似品；此類物品之零件,"footwear, gaiters, & the like",temp
+165,goods,part12,帽類及其零件,headgear & other parts,temp
+166,goods,part12,雨傘、陽傘、手杖、座凳式手杖、鞭、馬鞭及其零件,"umbrellas, sun umbrellas, walking-sticks, whips, riding-crops & parts",temp
+167,goods,part12,已整理之羽毛、羽絨及其製品；人造花；人髮製品,"prepared feathers, human hair & articles thereof, artificial flowers",temp
+168,goods,part13,石料、膠泥、水泥、石棉、雲母或類似材料之製品,"articles of stone, plaster, cement, asbestos, mica or similar materials",temp
+169,goods,part13,陶瓷產品,ceramic products,temp
+170,goods,part13,玻璃及玻璃器,glass & glassware,temp
+171,goods,part14,天然珍珠或養珠、寶石或次寶石、貴金屬、被覆貴金屬之金屬及其製品；仿首飾；鑄幣,"pearls, stones, prec. metals, imitation jewelry, coins",temp
+172,goods,part15,鋼製,iron & steel,temp
+173,goods,part15,鋼鐵製品,articles of iron or steel,temp
+174,goods,part15,銅及其製品,copper & articles thereof,temp
+175,goods,part15,鎳及其製品,nickel & articles thereof,temp
+176,goods,part15,鋁其製品,aluminum & articles thereof,temp
+177,goods,part15,鉛及其製品,lead & articles thereof,temp
+178,goods,part15,鋅及其製品,zinc & articles thereof,temp
+179,goods,part15,錫及其製品,tin & articles thereof,temp
+180,goods,part15,其他卑金屬；瓷金；及其製品,"base metals nesoi, cermets, articles etc.",temp
+181,goods,part15,卑金屬製工具、器具、利器、匙、叉及其零件,"tools, spoons & forks of base metal",temp
+182,goods,part15,雜項卑金屬製品,miscellaneous articles of base metal,temp
+183,goods,part16,核子反應器、鍋爐、機器及機械用具；及其零件,"nuclear reactors, boilers, machinery & mechanical appliances, computers",temp
+184,goods,part16,電機與設備及其零件；錄音機及聲音重放機；電視影像、聲音記錄機及重放機；以及上述各物之零件及附件,"electrical machinery & equip. & parts, telecommunications equip., sound recorders, television recorders",temp
+185,goods,part17,鐵路或電車道機車、車輛及其零件；鐵路或電車道軌道固定設備及配件與零件；各種機械式（包括電動機械）交通信號設備,"railway or tramway locomotives, rolling stock, track fixtures & fittings, signals",temp
+186,goods,part17,鐵路及電車道車輛以外之車輛及其零件與附件,vehicles other than railway or tramway rolling stock,temp
+187,goods,part17,航空器、太空船及其零件,"aircraft, spacecraft, & parts thereof",temp
+188,goods,part17,船舶及浮動構造體,"ships, boats, & floating structures",temp
+189,goods,part18,光學、照相、電影、計量、檢查、精密、內科或外科儀器及器具；鐘錶；樂器；上述物品之零件及附件,"optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments & accessories",temp
+190,goods,part18,鐘、錶及其零件,clocks & watches & parts thereof,temp
+191,goods,part18,樂器；與其零件及附件,"musical instruments, parts & accessories",temp
+192,goods,part19,武器與彈藥；及其零件與附件,"arms & ammunition, parts & accessories",temp
+193,goods,part20,家具；寢具、褥支持物、軟墊及類似充填家具；未列名之燈具及照明配件；照明標誌、照明名牌及類似品；組合式建築物,"furniture, bedding, cushions, lamps & lighting fittings nesoi, illuminated signs, nameplates & the like, prefabricated buildings",temp
+194,goods,part20,玩具、遊戲品與運動用品；及其零件與附件,"toys, games & sports equip, parts & acces.",temp
+195,goods,part20,雜項製品,miscellaneous manufactured articles,temp
+196,goods,part21,藝術品、珍藏品及古董,"works of art. collectors' pieces, antiques",temp

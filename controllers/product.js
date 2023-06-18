@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found products:"+products);
         console.log("type of products:"+typeof(products));
         console.log("type of 1st product:"+typeof(products[0]));
-        //console.log("1st product:"+products[0].a30mean)
+        //console.log("1st product:"+products[0].a30itemCh)
         console.log("No. of product:"+products.length)
         let productlist=encodeURIComponent(JSON.stringify(products));
         console.log("type of products:"+typeof(productlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_product = new Product(ctx.request.body);
-    console.log("got new_product:"+new_product.a30mean);
+    console.log("got new_product:"+new_product.a30itemCh);
     await new_product.save()
     .then(()=>{
         console.log("Saving new_product....");
@@ -111,7 +111,7 @@ async batchinput(ctx, next){
     });
     var lineno=0;
     var productArray;
-    var tempstore=new Array(8);
+    var tempstore=new Array(6);
     for (let i=0;i<8;i++){
         tempstore[i]=new Array();
     };
@@ -121,7 +121,7 @@ async batchinput(ctx, next){
     //當讀入一行資料時
     lineReader.on('line', function(data) {
         var values = data.split(',');
-        for (let i=0;i<8;i++){
+        for (let i=0;i<6;i++){
             tempstore[i][lineno]=values[i].trim();
         }
         lineno++;
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_product=>{
                 await new_product.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_product.a30mean)
+                    console.log("Saved document:"+new_product.a30itemCh)
                     })
                 .catch((err)=>{
                     console.log("Product.save() failed !!")
@@ -145,8 +145,8 @@ async batchinput(ctx, next){
                 })
         });//EOF saveone
         for (let k=0;k<lineno;k++){
-            productArray[k]=new Array(8);
-            for (let m=0;m<8;m++){
+            productArray[k]=new Array(6);
+            for (let m=0;m<6;m++){
                 productArray[k][m]=tempstore[m][k]
                 //console.log(productArray[k])
             }
@@ -158,14 +158,12 @@ async batchinput(ctx, next){
         productArray.forEach(function(productj){
             sequence=sequence.then(function(){
                 var new_product = new Product({
-                  a05hscode:productj[0],
-                  a10part:productj[1],
-                  a15chapter:productj[2],
-                  a20section:productj[3],
-                  a25subsection:productj[4],
-                  a30itemCh:productj[5],
-                  a35itemEn:productj[6],
-                  a99footnote:productj[7]
+                  a03tempcode:productj[0],
+                  a08industry:productj[1],
+                  a10part:productj[2],
+                  a30itemCh:productj[3],
+                  a35itemEn:productj[4],
+                  a99footnote:productj[5]
                 });//EOF new product
                     saveone(new_product)
                 .catch(err=>{
@@ -183,9 +181,9 @@ async batchinput(ctx, next){
     .then(async ()=>{
         //console.log("going to list prject....");
         //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
-        console.log("go back to datamanage1.ejs");
+        console.log("go back to datamanage.ejs");
         statusreport="完成product批次輸入";
-        await ctx.render("innerweb/datamanage/datamanagetemp",{
+        await ctx.render("innerweb/datamanage",{
             statusreport
         })
     })

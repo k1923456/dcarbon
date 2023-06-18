@@ -4,11 +4,9 @@ var Schema = mongoose.Schema;
 
 var ProductSchema = new Schema(
   {
-    a05hscode:{type:String,required:false},
+    a03tempcode:{type:String,required:false},
+    a08industry:{type:String,required:false},
     a10part:{type:String,required:false},
-    a15chapter:{type:String,required:false},
-    a20section:{type:String,required:false},
-    a25subsection:{type:String,required:false},
     a30itemCh:{type:String,required:false},
     a35itemEn:{type:String,required:false},
     a99footnote:{type:String,required:false}

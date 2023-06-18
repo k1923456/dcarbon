@@ -2,6 +2,8 @@
 const Case = require('../models/index').case;
 const Term = require('../models/index').term;
 const Applicant = require('../models/index').applicant;
+const Progress = require('../models/index').progress;
+const Activity = require('../models/index').activity;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
@@ -12,7 +14,7 @@ async list(ctx,next){
         //console.log("found cases:"+cases);
         console.log("type of cases:"+typeof(cases));
         console.log("type of 1st case:"+typeof(cases[0]));
-        //console.log("1st case:"+cases[0].a30mean)
+        //console.log("1st case:"+cases[0].a15casename)
         console.log("No. of case:"+cases.length)
         let caselist=encodeURIComponent(JSON.stringify(cases));
         console.log("type of cases:"+typeof(caselist));
@@ -84,32 +86,46 @@ async inputpage(ctx, next) {
 async inputpage1(ctx, next) {
   var {statusreport}=ctx.request.body;
   console.log("gotten query:"+statusreport);
-  var termlist;
+  var applicantlist;
+  var activitylist;
   var status=1;
-  await Term.find({a15model:"product"}).then(async terms=>{
-      console.log("type of terms:"+typeof(terms));
-      console.log("type of 1st term:"+typeof(terms[0]));
-      console.log("1st term:"+terms[0])
-      console.log("No. of term:"+terms.length)
-      termlist=encodeURIComponent(JSON.stringify(terms));
-      console.log("type of termlist:"+typeof(termlist));
+  await Applicant.find().then(async applicants=>{
+    console.log("type of applicants:"+typeof(applicants));
+    console.log("type of 1st applicant:"+typeof(applicants[0]));
+    console.log("1st applicant:"+applicants[0])
+    console.log("No. of applicant:"+applicants.length)
+    applicantlist=encodeURIComponent(JSON.stringify(applicants));
+    console.log("type of applicantlist:"+typeof(applicantlist));
+    })
+    .catch(err=>{
+      console.log("Applicant.find({}) failed !!");
+      console.log(err)
+    })
+  await Activity.find().then(async activitys=>{
+      console.log("type of activitys:"+typeof(activitys));
+      console.log("type of 1st activity:"+typeof(activitys[0]));
+      console.log("1st activity:"+activitys[0])
+      console.log("No. of activity:"+activitys.length)
+      activitylist=encodeURIComponent(JSON.stringify(activitys));
+      console.log("type of activitylist:"+typeof(activitylist));
       if(statusreport===undefined){
           statusreport="status未傳成功!"
       }
-      if(status=="0"){
+      if(status==0){
       await ctx.render("case/inputpage",{
           statusreport:ctx.request.body.statusreport,
-          termlist
+          activitylist
       })
       }else{
           await ctx.render("case/inputpage1",{
               statusreport:ctx.request.body.statusreport,
-              termlist
+              applicantlist,
+              activitylist
           })
       }
     })
   .catch(err=>{
-      console.log("Term.find({}) failed !!");
+      console.log("activity.find({}) failed !!");
       console.log(err)
   })
 },
@@ -153,7 +169,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_case = new Case(ctx.request.body);
-    console.log("got new_case:"+new_case.a30mean);
+    console.log("got new_case:"+new_case.a15casename);
     await new_case.save()
     .then(()=>{
         console.log("Saving new_case....");
@@ -164,6 +180,22 @@ async create(ctx,next){
         console.log("Case.save() failed !!")
         console.log(err)
     })
+},
+//寫入申請人填寫資料
+async create1(ctx,next){
+  var new_case = new Case(ctx.request.body);
+  var new_progress=new Progress();
+  console.log("got new_case:"+new_case.a15casename);
+  await new_case.save()
+  .then(()=>{
+      console.log("Saving new_case....")
+      statusreport="儲存申請案資料後回到本頁";
+      ctx.redirect("/base4dcarbon/branch/app4applicant?statusreport="+statusreport)
+    })
+  .catch((err)=>{
+      console.log("Case.save() failed !!")
+      console.log(err)
+   })
 },
 //批次新增資料
 async batchinput(ctx, next){
@@ -185,7 +217,7 @@ async batchinput(ctx, next){
     });
     var lineno=0;
     var caseArray;
-    var tempstore=new Array(13);
+    var tempstore=new Array(11);
     for (let i=0;i<13;i++){
         tempstore[i]=new Array();
     };
@@ -195,7 +227,7 @@ async batchinput(ctx, next){
     //當讀入一行資料時
     lineReader.on('line', function(data) {
         var values = data.split(',');
-        for (let i=0;i<13;i++){
+        for (let i=0;i<11;i++){
             tempstore[i][lineno]=values[i].trim();
         }
         lineno++;
@@ -211,7 +243,7 @@ async batchinput(ctx, next){
         let saveone=(async new_case=>{
                 await new_case.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_case.a30mean)
+                    console.log("Saved document:"+new_case.a15casename)
                     })
                 .catch((err)=>{
                     console.log("Case.save() failed !!")
@@ -219,8 +251,8 @@ async batchinput(ctx, next){
                 })
         });//EOF saveone
         for (let k=0;k<lineno;k++){
-            caseArray[k]=new Array(13);
-            for (let m=0;m<13;m++){
+            caseArray[k]=new Array(11);
+            for (let m=0;m<11;m++){
                 caseArray[k][m]=tempstore[m][k]
                 //console.log(caseArray[k])
             }
@@ -232,7 +264,7 @@ async batchinput(ctx, next){
         caseArray.forEach(function(casej){
             sequence=sequence.then(function(){
                 var new_case = new Case({
-                  a05apllicantID:casej[0],
+                  a05applicantID:casej[0],
                   a10activityID:casej[1],
                   a15casename:casej[2],
                   a20caseaddress:casej[3],
@@ -240,11 +272,9 @@ async batchinput(ctx, next){
                   a30caseunit:casej[5],
                   a35scale:casej[6],
                   a40loyalistID:casej[7],
-                  a45progressID:casej[8],
-                  a50updatetime:casej[9],
-                  a55pass:casej[10],
-                  a60right:casej[11],
-                  a99footnote:casej[12]
+                  a55pass:casej[8],
+                  a60right:casej[9],
+                  a99footnote:casej[10]
 
                 });//EOF new case
                     saveone(new_case)

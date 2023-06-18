@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found progresss:"+progresss);
         console.log("type of progresss:"+typeof(progresss));
         console.log("type of 1st progress:"+typeof(progresss[0]));
-        //console.log("1st progress:"+progresss[0].a30mean)
+        //console.log("1st progress:"+progresss[0].a10stage)
         console.log("No. of progress:"+progresss.length)
         let progresslist=encodeURIComponent(JSON.stringify(progresss));
         console.log("type of progresss:"+typeof(progresslist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_progress = new Progress(ctx.request.body);
-    console.log("got new_progress:"+new_progress.a30mean);
+    console.log("got new_progress:"+new_progress.a10stage);
     await new_progress.save()
     .then(()=>{
         console.log("Saving new_progress....");
@@ -90,6 +90,21 @@ async create(ctx,next){
         console.log("Progress.save() failed !!")
         console.log(err)
     })
+},
+//由API寫入一筆資料
+async create0(ctx,next){
+  var new_progress = new Progress(ctx.request.body);
+  console.log("got new_progress:"+new_progress.a10stage);
+  await new_progress.save()
+  .then(()=>{
+      console.log("Saving new_progress....");
+  statusreport="儲存單筆客戶資料後進入本頁";
+  ctx.redirect("/base4dcarbon/progress/?statusreport="+statusreport)
+  })
+  .catch((err)=>{
+      console.log("Progress.save() failed !!")
+      console.log(err)
+  })
 },
 //批次新增資料
 async batchinput(ctx, next){
@@ -137,7 +152,7 @@ async batchinput(ctx, next){
         let saveone=(async new_progress=>{
                 await new_progress.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_progress.a30mean)
+                    console.log("Saved document:"+new_progress.a10stage)
                     })
                 .catch((err)=>{
                     console.log("Progress.save() failed !!")

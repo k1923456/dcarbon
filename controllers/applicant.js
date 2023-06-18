@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found applicants:"+applicants);
         console.log("type of applicants:"+typeof(applicants));
         console.log("type of 1st applicant:"+typeof(applicants[0]));
-        //console.log("1st applicant:"+applicants[0].a30mean)
+        //console.log("1st applicant:"+applicants[0].a15firmname)
         console.log("No. of applicant:"+applicants.length)
         let applicantlist=encodeURIComponent(JSON.stringify(applicants));
         console.log("type of applicants:"+typeof(applicantlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_applicant = new Applicant(ctx.request.body);
-    console.log("got new_applicant:"+new_applicant.a30mean);
+    console.log("got new_applicant:"+new_applicant.a15firmname);
     await new_applicant.save()
     .then(()=>{
         console.log("Saving new_applicant....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_applicant=>{
                 await new_applicant.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_applicant.a30mean)
+                    console.log("Saved document:"+new_applicant.a15firmname)
                     })
                 .catch((err)=>{
                     console.log("Applicant.save() failed !!")

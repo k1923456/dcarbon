@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var CaseSchema = new Schema(
   {
-    a05apllicantID:{type:Schema.Types.ObjectID,required:false},
+    a05applicantID:{type:Schema.Types.ObjectID,required:false},
     a10activityID:{type:Schema.Types.ObjectID,required:false},
     a15casename:{type:String,required:false},
     a20caseaddress:{type:String,required:false},
@@ -12,8 +12,6 @@ var CaseSchema = new Schema(
     a30caseunit:{type:String,required:false},
     a35scale:{type:Number,required:false},
     a40loyalistID:{type:Array,required:false},
-    a45progressID:{type:Schema.Types.ObjectID,required:false},
-    a50updatetime:{type:Date,required:false},
     a55pass:{type:Boolean,required:false},
     a60right:{type:Number,required:false},
     a99footnote:{type:String,required:false}

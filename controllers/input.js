@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found inputs:"+inputs);
         console.log("type of inputs:"+typeof(inputs));
         console.log("type of 1st input:"+typeof(inputs[0]));
-        //console.log("1st input:"+inputs[0].a30mean)
+        //console.log("1st input:"+inputs[0].a15nickname)
         console.log("No. of input:"+inputs.length)
         let inputlist=encodeURIComponent(JSON.stringify(inputs));
         console.log("type of inputs:"+typeof(inputlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_input = new Input(ctx.request.body);
-    console.log("got new_input:"+new_input.a30mean);
+    console.log("got new_input:"+new_input.a15nickname);
     await new_input.save()
     .then(()=>{
         console.log("Saving new_input....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_input=>{
                 await new_input.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_input.a30mean)
+                    console.log("Saved document:"+new_input.a15nickname)
                     })
                 .catch((err)=>{
                     console.log("Input.save() failed !!")

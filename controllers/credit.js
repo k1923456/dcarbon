@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found credits:"+credits);
         console.log("type of credits:"+typeof(credits));
         console.log("type of 1st credit:"+typeof(credits[0]));
-        //console.log("1st credit:"+credits[0].a30mean)
+        //console.log("1st credit:"+credits[0].a05caseID)
         console.log("No. of credit:"+credits.length)
         let creditlist=encodeURIComponent(JSON.stringify(credits));
         console.log("type of credits:"+typeof(creditlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_credit = new Credit(ctx.request.body);
-    console.log("got new_credit:"+new_credit.a30mean);
+    console.log("got new_credit:"+new_credit.a05caseID);
     await new_credit.save()
     .then(()=>{
         console.log("Saving new_credit....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_credit=>{
                 await new_credit.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_credit.a30mean)
+                    console.log("Saved document:"+new_credit.a05caseID)
                     })
                 .catch((err)=>{
                     console.log("Credit.save() failed !!")

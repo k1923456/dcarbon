@@ -11,7 +11,7 @@ async list(ctx,next){
         //console.log("found staffs:"+staffs);
         console.log("type of staffs:"+typeof(staffs));
         console.log("type of 1st staff:"+typeof(staffs[0]));
-        //console.log("1st staff:"+staffs[0].a30mean)
+        //console.log("1st staff:"+staffs[0].a10firstname)
         console.log("No. of staff:"+staffs.length)
         let stafflist=encodeURIComponent(JSON.stringify(staffs));
         console.log("type of staffs:"+typeof(stafflist));
@@ -163,7 +163,7 @@ async batchinput(ctx, next){
         let saveone=(async new_staff=>{
                 await new_staff.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_staff.a30mean)
+                    console.log("Saved document:"+new_staff.a10firstname)
                     })
                 .catch((err)=>{
                     console.log("Staff.save() failed !!")

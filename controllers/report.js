@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found reports:"+reports);
         console.log("type of reports:"+typeof(reports));
         console.log("type of 1st report:"+typeof(reports[0]));
-        //console.log("1st report:"+reports[0].a30mean)
+        //console.log("1st report:"+reports[0].a30filename)
         console.log("No. of report:"+reports.length)
         let reportlist=encodeURIComponent(JSON.stringify(reports));
         console.log("type of reports:"+typeof(reportlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_report = new Report(ctx.request.body);
-    console.log("got new_report:"+new_report.a30mean);
+    console.log("got new_report:"+new_report.a30filename);
     await new_report.save()
     .then(()=>{
         console.log("Saving new_report....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_report=>{
                 await new_report.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_report.a30mean)
+                    console.log("Saved document:"+new_report.a30filename)
                     })
                 .catch((err)=>{
                     console.log("Report.save() failed !!")

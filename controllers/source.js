@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found sources:"+sources);
         console.log("type of sources:"+typeof(sources));
         console.log("type of 1st source:"+typeof(sources[0]));
-        //console.log("1st source:"+sources[0].a30mean)
+        //console.log("1st source:"+sources[0].a10fulltitle)
         console.log("No. of source:"+sources.length)
         let sourcelist=encodeURIComponent(JSON.stringify(sources));
         console.log("type of sources:"+typeof(sourcelist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_source = new Source(ctx.request.body);
-    console.log("got new_source:"+new_source.a30mean);
+    console.log("got new_source:"+new_source.a10fulltitle);
     await new_source.save()
     .then(()=>{
         console.log("Saving new_source....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_source=>{
                 await new_source.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_source.a30mean)
+                    console.log("Saved document:"+new_source.a10fulltitle)
                     })
                 .catch((err)=>{
                     console.log("Source.save() failed !!")

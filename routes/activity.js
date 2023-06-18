@@ -5,9 +5,13 @@ const activityController = require('../controllers/index').activity;
 router.get('/', async (ctx, next)=> {
 	await activityController.list(ctx)
 });
-//到新增資料頁
+//到新增活動資料頁
 router.get('/inputpage', async (ctx, next)=> {
     await activityController.inputpage(ctx,next)
+});
+//到申請人填寫活動資料頁
+router.get('/inputpage1', async (ctx, next)=> {
+  await activityController.inputpage1(ctx,next)
 });
 //到修正單筆資料頁
 router.get('/editpage/:id', async (ctx, next)=> {
@@ -30,6 +34,11 @@ router.get('/find/:no', async(ctx, next)=> {
 router.post('/add', async (ctx, next)=> {
 	console.log(ctx.request.body);
 	await activityController.create(ctx)
+});
+//存入申請人填寫的活動資料
+router.post('/add1', async (ctx, next)=> {
+	console.log(ctx.request.body);
+	await activityController.create1(ctx)
 });
 //依參數id刪除資料
 router.get('/delete/:id', async (ctx, next)=> {

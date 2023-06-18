@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found userrights:"+userrights);
         console.log("type of userrights:"+typeof(userrights));
         console.log("type of 1st userright:"+typeof(userrights[0]));
-        //console.log("1st userright:"+userrights[0].a30mean)
+        //console.log("1st userright:"+userrights[0].a05group)
         console.log("No. of userright:"+userrights.length)
         let userrightlist=encodeURIComponent(JSON.stringify(userrights));
         console.log("type of userrights:"+typeof(userrightlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_userright = new Userright(ctx.request.body);
-    console.log("got new_userright:"+new_userright.a30mean);
+    console.log("got new_userright:"+new_userright.a05group);
     await new_userright.save()
     .then(()=>{
         console.log("Saving new_userright....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_userright=>{
                 await new_userright.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_userright.a30mean)
+                    console.log("Saved document:"+new_userright.a05group)
                     })
                 .catch((err)=>{
                     console.log("Userright.save() failed !!")

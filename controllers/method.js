@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found methods:"+methods);
         console.log("type of methods:"+typeof(methods));
         console.log("type of 1st method:"+typeof(methods[0]));
-        //console.log("1st method:"+methods[0].a30mean)
+        //console.log("1st method:"+methods[0].a25different)
         console.log("No. of method:"+methods.length)
         let methodlist=encodeURIComponent(JSON.stringify(methods));
         console.log("type of methods:"+typeof(methodlist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_method = new Method(ctx.request.body);
-    console.log("got new_method:"+new_method.a30mean);
+    console.log("got new_method:"+new_method.a25different);
     await new_method.save()
     .then(()=>{
         console.log("Saving new_method....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_method=>{
                 await new_method.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_method.a30mean)
+                    console.log("Saved document:"+new_method.a25different)
                     })
                 .catch((err)=>{
                     console.log("Method.save() failed !!")

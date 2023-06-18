@@ -10,7 +10,7 @@ async list(ctx,next){
         //console.log("found evidences:"+evidences);
         console.log("type of evidences:"+typeof(evidences));
         console.log("type of 1st evidence:"+typeof(evidences[0]));
-        //console.log("1st evidence:"+evidences[0].a30mean)
+        //console.log("1st evidence:"+evidences[0].a30filename)
         console.log("No. of evidence:"+evidences.length)
         let evidencelist=encodeURIComponent(JSON.stringify(evidences));
         console.log("type of evidences:"+typeof(evidencelist));
@@ -79,7 +79,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_evidence = new Evidence(ctx.request.body);
-    console.log("got new_evidence:"+new_evidence.a30mean);
+    console.log("got new_evidence:"+new_evidence.a30filename);
     await new_evidence.save()
     .then(()=>{
         console.log("Saving new_evidence....");
@@ -137,7 +137,7 @@ async batchinput(ctx, next){
         let saveone=(async new_evidence=>{
                 await new_evidence.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_evidence.a30mean)
+                    console.log("Saved document:"+new_evidence.a30filename)
                     })
                 .catch((err)=>{
                     console.log("Evidence.save() failed !!")

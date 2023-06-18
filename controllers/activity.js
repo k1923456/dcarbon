@@ -1,5 +1,8 @@
 //載入相對應的model
 const Activity = require('../models/index').activity;
+const Term = require('../models/index').term;
+const Product = require('../models/index').product;
+const Applicant=require('../models/index').applicant;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
@@ -10,7 +13,7 @@ async list(ctx,next){
         //console.log("found activitys:"+activitys);
         console.log("type of activitys:"+typeof(activitys));
         console.log("type of 1st activity:"+typeof(activitys[0]));
-        //console.log("1st activity:"+activitys[0].a30mean)
+        //console.log("1st activity:"+activitys[0].mean)
         console.log("No. of activity:"+activitys.length)
         let activitylist=encodeURIComponent(JSON.stringify(activitys));
         console.log("type of activitys:"+typeof(activitylist));
@@ -40,6 +43,54 @@ async inputpage(ctx, next) {
 	await ctx.render("activity/inputpage",{
 		statusreport:ctx.request.body.statusreport
 	})
+},
+//到申請人填寫活動資料頁
+async inputpage1(ctx, next) {
+  var {statusreport}=ctx.request.body;
+  console.log("gotten query:"+statusreport);
+  var termlist;
+  var productlist;
+  var status=1;
+  await Term.find({a15model:"activity"}).then(async terms=>{
+    console.log("type of terms:"+typeof(terms));
+    console.log("type of 1st term:"+typeof(terms[0]));
+    console.log("1st term:"+terms[0])
+    console.log("No. of term:"+terms.length)
+    termlist=encodeURIComponent(JSON.stringify(terms));
+    console.log("type of termlist:"+typeof(termlist));
+    })
+    .catch(err=>{
+        console.log("Term.find({}) failed !!");
+        console.log(err)
+    })
+  await Product.find().then(async products=>{
+      console.log("type of products:"+typeof(products));
+      console.log("type of 1st product:"+typeof(products[0]));
+      console.log("1st product:"+products[0])
+      console.log("No. of product:"+products.length)
+      productlist=encodeURIComponent(JSON.stringify(products));
+      console.log("type of productlist:"+typeof(productlist));
+      if(statusreport===undefined){
+          statusreport="status未傳成功!"
+      }
+      if(status==0){
+      await ctx.render("case/inputpage",{
+          statusreport:ctx.request.body.statusreport,
+          termlist,
+          productlist
+      })
+      }else{
+          await ctx.render("activity/inputpage1",{
+              statusreport:ctx.request.body.statusreport,
+            termlist,
+              productlist
+          })
+      }
+    })
+  .catch(err=>{
+      console.log("product.find({}) failed !!");
+      console.log(err)
+  })
 },
 //到修正單筆資料頁
 async editpage(ctx, next) {
@@ -79,7 +130,7 @@ findByNo(req,res){
 //寫入一筆資料
 async create(ctx,next){
     var new_activity = new Activity(ctx.request.body);
-    console.log("got new_activity:"+new_activity.a30mean);
+    console.log("got new_activity:"+new_activity.a15nickname);
     await new_activity.save()
     .then(()=>{
         console.log("Saving new_activity....");
@@ -90,6 +141,21 @@ async create(ctx,next){
         console.log("Activity.save() failed !!")
         console.log(err)
     })
+},
+//存入申請人填寫的活動資料
+async create1(ctx,next){
+  var new_activity = new Activity(ctx.request.body);
+  console.log("got new_activity:"+new_activity.a15nickname);
+  await new_activity.save()
+  .then(()=>{
+      console.log("Saving new_activity....");
+      statusreport="儲存單筆活動資料後進入本頁";
+      ctx.redirect("/base4dcarbon/case/inputpage1?statusreport="+statusreport)
+    })
+  .catch((err)=>{
+      console.log("Activity.save() failed !!")
+      console.log(err)
+  })
 },
 //批次新增資料
 async batchinput(ctx, next){
@@ -137,7 +203,7 @@ async batchinput(ctx, next){
         let saveone=(async new_activity=>{
                 await new_activity.save()
                 .then(()=>{
-                    console.log("Saved document:"+new_activity.a30mean)
+                    console.log("Saved document:"+new_activity.a15nickname)
                     })
                 .catch((err)=>{
                     console.log("Activity.save() failed !!")

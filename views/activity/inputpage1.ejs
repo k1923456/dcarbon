@@ -59,7 +59,7 @@ body {
         <div class="card-body">
           <h5 class="card-title">{{card_title}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{card_subtitle}}</h6>
-          <form action="/base4dcarbon/activity/add1" method="post">
+          <form :action="activityadd1" method="post">
             <div class="form-group" :key="inputerUIkey">
 
               <label for="formGroupExampleInput2">{{items.item0}}</label>
@@ -88,7 +88,7 @@ body {
               <input type="text" name="a99footnote" class="form-control" id="formGroupExampleInput99" :placeholder="holders.holder99">
 
               <input type="hidden" name="statusreport" class="form-control" id="msg1" value="由單筆activity輸入後進入本頁">
-
+              <br>
               <input type="submit" id="button1" value="確定送出" class="btn btn-info">
             </div>
           </form>
@@ -144,10 +144,12 @@ Vue.component("bander",{
             holder3:"字串,",
             holder99:"字串"
         },
+        personID:'<%- personID %>',
         termlist:JSON.parse(decodeURIComponent('<%=termlist%>')),
         productlist:JSON.parse(decodeURIComponent('<%=productlist%>')),
         types:[],
         products:[],
+        activityadd1:"",
       inputerUIkey:0
 
       }
@@ -163,6 +165,7 @@ Vue.component("bander",{
           product.a30itemCh=temp
           this.products.push(product)
         }
+      this.activityadd1="/base4dcarbon/activity/add1/"+this.personID
     },
     methods:{
         rerender:function() {

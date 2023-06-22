@@ -30,7 +30,7 @@ background-color: rgb(248, 243, 243);
   flex-direction:column;
 	 justify-content: flex-start;
      align-items:center;
-  	margin: 20px;
+  	margin: 0;
     border-radius:25px
 }
 .appbutton{
@@ -43,6 +43,39 @@ background-color: rgb(248, 243, 243);
     margin:5px;
     border-radius:10px
 
+}
+#sidearea{
+background-color: rgb(213, 218, 210);
+  height: 760px;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+    border-radius: 20px;
+}
+.sidepart{
+    width: 350px;
+    height:240px;
+    margin-top:10px;
+    border-radius:10px
+}
+#bellcall{
+    background:#f5f5d6
+}
+#messageboard{
+    background:#d6f5de
+}
+#contactpart{
+    background:#d6f5de ;
+    width:100vw;
+    height:100px;
+    align-content: flex-end;
+}
+.contactinfo {
+    margin-left:100px
 }
 .navbar{background:#d6eff5;}
 .nav-link, .navbar-brand{color: #f4f4f4;cursor:pointer;}
@@ -57,10 +90,12 @@ background-color: rgb(248, 243, 243);
   </head>
   <body>
     <div id="show_div">
-            <content1></content1>
+      <content1></content1>
     </div>
 
     <template id="content1UI">
+        <nav aria-label="...">
+
         <div id="mobilephone">
             <h3>公評碳權申請人App</h3>
             <a class="appbutton">{{buttons.button1}}</a>
@@ -71,10 +106,13 @@ background-color: rgb(248, 243, 243);
             <a class="appbutton">{{buttons.button6}}</a>
               <==           ...
           </div>
-        </template>
+        </nav>
+    </template>
 
 <!-- Vue CDN-->
 <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
 <script>
   Vue.component("content1",{
     props:{},
@@ -89,12 +127,11 @@ background-color: rgb(248, 243, 243);
             button6:"公評碳權權包"
           },
         user1:JSON.parse(decodeURIComponent('<%= user1 %>')),
-        applyurl:"",
-        //applyurl:"/base4dcarbon/activity/inputpage1/647bfaf1e07292995168f90f"
+        applyurl:"/base4dcarbon/activity/inputpage1/"+user1.a10personID
       }
     },
     mounted:function(){
-        this.applyurl="/base4dcarbon/activity/inputpage1/"+this.user1.a10personID;
+        console.log("user1:"+this.user1)
         console.log("applyurl:"+this.applyurl)
     },
     methods:{

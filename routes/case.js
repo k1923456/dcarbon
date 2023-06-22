@@ -10,7 +10,7 @@ router.get('/inputpage', async (ctx, next)=> {
     await caseController.inputpage(ctx,next)
 });
 //到申請人新增申請案頁
-router.get('/inputpage1', async (ctx, next)=> {
+router.get('/inputpage1/:id', async (ctx, next)=> {
   await caseController.inputpage1(ctx,next)
 });
 //到修正單筆資料頁
@@ -36,7 +36,7 @@ router.post('/add', async (ctx, next)=> {
 	await caseController.create(ctx)
 });
 //寫入申請人填寫資料
-router.post('/addbyapplicant', async (ctx, next)=> {
+router.post('/addbyapplicant/:id', async (ctx, next)=> {
 	console.log(ctx.request.body);
 	await caseController.create1(ctx)
 });

@@ -8,7 +8,8 @@ var SubactSchema = new Schema(
     a10type:{type:String,required:false},
     a15nickname:{type:String,required:false},
     a20describe:{type:String,required:false},
-    a25loyalistID:{type:Schema.Types.ObjectID,required:false},
+    a25order:{type:Number,required:false},
+    a30loyalistID:{type:Schema.Types.ObjectID,required:false},
     a99footnote:{type:String,required:false}
   }
 );

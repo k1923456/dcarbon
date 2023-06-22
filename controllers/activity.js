@@ -48,6 +48,7 @@ async inputpage(ctx, next) {
 async inputpage1(ctx, next) {
   var {statusreport}=ctx.request.body;
   console.log("gotten query:"+statusreport);
+  var personID=ctx.params.id;
   var termlist;
   var productlist;
   var status=1;
@@ -74,16 +75,17 @@ async inputpage1(ctx, next) {
           statusreport="status未傳成功!"
       }
       if(status==0){
-      await ctx.render("case/inputpage",{
+      await ctx.render("activity/inputpage",{
           statusreport:ctx.request.body.statusreport,
           termlist,
           productlist
       })
       }else{
           await ctx.render("activity/inputpage1",{
-              statusreport:ctx.request.body.statusreport,
-            termlist,
-              productlist
+              statusreport,
+              termlist,
+              productlist,
+              personID
           })
       }
     })
@@ -145,12 +147,18 @@ async create(ctx,next){
 //存入申請人填寫的活動資料
 async create1(ctx,next){
   var new_activity = new Activity(ctx.request.body);
+  var personID=ctx.params.id;
+  var activityID, nickname;
   console.log("got new_activity:"+new_activity.a15nickname);
   await new_activity.save()
-  .then(()=>{
+  .then(async activityx=>{
       console.log("Saving new_activity....");
+      console.log("the saved activity:"+activityx);
+      activityID=activityx._id;
+      actname=activityx.a15nickname;
+      console.log("got actname:"+actname);
       statusreport="儲存單筆活動資料後進入本頁";
-      ctx.redirect("/base4dcarbon/case/inputpage1?statusreport="+statusreport)
+      await ctx.redirect("/base4dcarbon/case/inputpage1/"+personID+"?statusreport="+statusreport+"&activityID="+activityID+"&actname="+actname)
     })
   .catch((err)=>{
       console.log("Activity.save() failed !!")

@@ -18,7 +18,7 @@ body {
 }
 #mobilephone{
   background-color: rgb(249, 252, 247);
-  height: 800px;
+  height: 820px;
   width: 600px;
   border-width:medium;
   border-style:solid;
@@ -28,7 +28,7 @@ body {
   flex-direction:column;
 	 justify-content: flex-start;
      align-items:center;
-  	margin: 0;
+  	margin: 20PX;
     border-radius:25px
 }
 .navbar{background:#ddedf8;}
@@ -59,24 +59,14 @@ body {
         <div class="card-body">
           <h5 class="card-title">{{card_title}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{card_subtitle}}</h6>
-          <form action="/base4dcarbon/case/addbyapplicant" method="post">
+          <form :action="caseadd1" method="post">
             <div class="form-group" :key="inputerUIkey">
 
               <label for="formGroupExampleInput2">{{items.item0}}</label>
-              <select :name="names.name0" class="form-select">
-                <optgroup v-for="applicant of applicantlist" :key="applicant._id">
-                  <option :value="applicant._id" >{{applicant.a05lastname}}{{applicant.a10firstname}}</option>
-                  </optgroup>
-                  </select>
-                <br>
+              <input type="text" :name="names.name0" class="form-control" id="formGroupExampleInput2" :value="personID" :placeholder="holders.holder0">
 
               <label for="formGroupExampleInput2">{{items.item1}}</label>
-              <select :name="names.name1" class="form-select">
-                <optgroup v-for="activity of activitylist" :key="activity._id">
-                  <option :value="activity._id" >{{activity.a15nickname}}</option>
-                  </optgroup>
-                  </select>
-                <br>
+              <input type="text" :name="names.name1" class="form-control" id="formGroupExampleInput2" :value="activityID" :placeholder="holders.holder1">
 
               <label for="formGroupExampleInput2">{{items.item2}}</label>
               <input type="text" :name="names.name2" class="form-control" id="formGroupExampleInput2" :placeholder="holders.holder2">
@@ -97,7 +87,7 @@ body {
               <input type="text" name="a99footnote" class="form-control" id="formGroupExampleInput99" :placeholder="holders.holder99">
 
               <input type="hidden" name="statusreport" class="form-control" id="msg1" value="由單筆case輸入後進入本頁">
-
+              <br>
               <input type="submit" id="button1" value="確定送出" class="btn btn-info">
             </div>
           </form>
@@ -134,8 +124,8 @@ Vue.component("bander",{
         card_title:"新增1減碳或增匯申請案場",
         card_subtitle:"請輸入以下各項資料:",
         items:{
-          item0:"申請人代碼",
-          item1:"申請活動代碼",
+          item0:"即本App登入人(自動取得)",
+          item1:"",
           item2:"申請案場名稱",
           item3:"申請案場地址",
           item4:"申請案場中心點GPS",
@@ -159,8 +149,8 @@ Vue.component("bander",{
           name9:"a60right"
         },
         holders:{
-          holder0:"即本App登入人,免填",
-          holder1:"物件識別碼,",
+          holder0:"即本App登入人,自動取得",
+          holder1:"",
           holder2:"字串,",
           holder3:"字串,",
           holder4:"字串,",
@@ -171,14 +161,17 @@ Vue.component("bander",{
           holder9:"數字,",
           holder99:"字串"
         },
-        applicantlist:JSON.parse(decodeURIComponent('<%=applicantlist%>')),
-        activitylist:JSON.parse(decodeURIComponent('<%=activitylist%>')),
+        personID:'<%- personID %>',
+        activityID:'<%- activityID %>',
+        actname:'<%- actname %>',
+        caseadd1:"",
       inputerUIkey:0
 
       }
     },
     mounted:function(){
-
+      this.items.item1="申請活動代碼(即剛剛填寫的活動："+this.actname+")";
+      this.caseadd1="/base4dcarbon/case/addbyapplicant/"+this.personID
     },
     methods:{
         rerender:function() {

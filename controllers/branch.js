@@ -24,19 +24,41 @@ async dispatch(ctx, next) {
         case "tester":pwaroute="/base4dcarbon/branch/collecter";break;
         default:pwarouter="/base4dcarbon";
       }
-
-      await ctx.redirect(pwaroute);
+      await ctx.redirect(pwaroute+"/"+account);
   })
   .catch(err=>{
-      console.log("User.find() failed !!");
+      console.log("User.findOne() failed !!");
       console.log(err)
   })
 },
 //到Applicantweb
 async goapplicant(ctx, next) {
   console.log("進入branch controller的goapplicant");
-  statusreport="以認證申請人身分進入本頁";
-  await ctx.render("branch/app4applicant" ,{
+  var account=ctx.params.id;
+  console.log("account:"+account);
+  await User.findOne({a15account:account}).then(async userx=>{
+      console.log("userx ID:"+userx.a10personID);
+      statusreport="以認證申請人身分進入本頁";
+      console.log("type of userx:"+typeof(userx));
+      console.log("userx:"+userx)
+      let user1=encodeURIComponent(JSON.stringify(userx));
+      console.log("type of user1:"+typeof(user1));
+      console.log("user1:"+user1)
+      await ctx.render("branch/app4applicant" ,{
+        statusreport,
+        user1
+          })
+    })
+    .catch(err=>{
+      console.log("User.findOne() failed !!");
+      console.log(err)
+  })
+},
+//到decomposerweb
+async godecomposer(ctx, next) {
+  console.log("進入branch controller的godecomposer");
+  statusreport="以活動解構士身分進入本頁";
+  await ctx.render("branch/pwa4decomposer" ,{
     statusreport
 })
 },

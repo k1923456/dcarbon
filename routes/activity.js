@@ -10,7 +10,7 @@ router.get('/inputpage', async (ctx, next)=> {
     await activityController.inputpage(ctx,next)
 });
 //到申請人填寫活動資料頁
-router.get('/inputpage1', async (ctx, next)=> {
+router.get('/inputpage1/:id', async (ctx, next)=> {
   await activityController.inputpage1(ctx,next)
 });
 //到修正單筆資料頁
@@ -36,7 +36,7 @@ router.post('/add', async (ctx, next)=> {
 	await activityController.create(ctx)
 });
 //存入申請人填寫的活動資料
-router.post('/add1', async (ctx, next)=> {
+router.post('/add1/:id', async (ctx, next)=> {
 	console.log(ctx.request.body);
 	await activityController.create1(ctx)
 });

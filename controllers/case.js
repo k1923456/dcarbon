@@ -4,6 +4,7 @@ const Term = require('../models/index').term;
 const Applicant = require('../models/index').applicant;
 const Progress = require('../models/index').progress;
 const Activity = require('../models/index').activity;
+const User = require('../models/index').user;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
@@ -84,50 +85,27 @@ async inputpage(ctx, next) {
 },
 //到申請人新增申請案頁
 async inputpage1(ctx, next) {
-  var {statusreport}=ctx.request.body;
-  console.log("gotten query:"+statusreport);
-  var applicantlist;
-  var activitylist;
+  var statusreport=ctx.query.statusreport;
+  console.log("gotten statusreport:"+statusreport);
+  var activityID=ctx.query.activityID;
+  console.log("gotten activityID:"+activityID);
+  var actname=ctx.query.actname;
+  console.log("gotten actname:"+actname);
+  var personID=ctx.params.id;
   var status=1;
-  await Applicant.find().then(async applicants=>{
-    console.log("type of applicants:"+typeof(applicants));
-    console.log("type of 1st applicant:"+typeof(applicants[0]));
-    console.log("1st applicant:"+applicants[0])
-    console.log("No. of applicant:"+applicants.length)
-    applicantlist=encodeURIComponent(JSON.stringify(applicants));
-    console.log("type of applicantlist:"+typeof(applicantlist));
-    })
-    .catch(err=>{
-      console.log("Applicant.find({}) failed !!");
-      console.log(err)
-    })
-  await Activity.find().then(async activitys=>{
-      console.log("type of activitys:"+typeof(activitys));
-      console.log("type of 1st activity:"+typeof(activitys[0]));
-      console.log("1st activity:"+activitys[0])
-      console.log("No. of activity:"+activitys.length)
-      activitylist=encodeURIComponent(JSON.stringify(activitys));
-      console.log("type of activitylist:"+typeof(activitylist));
-      if(statusreport===undefined){
-          statusreport="status未傳成功!"
-      }
-      if(status==0){
+  if(status==0){
       await ctx.render("case/inputpage",{
           statusreport:ctx.request.body.statusreport,
           activitylist
       })
       }else{
           await ctx.render("case/inputpage1",{
-              statusreport:ctx.request.body.statusreport,
-              applicantlist,
-              activitylist
+              statusreport,
+              personID,
+              activityID,
+              actname
           })
       }
-    })
-  .catch(err=>{
-      console.log("activity.find({}) failed !!");
-      console.log(err)
-  })
 },
 
 
@@ -173,8 +151,9 @@ async create(ctx,next){
     await new_case.save()
     .then(()=>{
         console.log("Saving new_case....");
-    statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/case/?statusreport="+statusreport)
+
+        statusreport="儲存單筆申請案資料後進入本頁";
+        ctx.redirect("/base4dcarbon/case/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Case.save() failed !!")
@@ -184,14 +163,40 @@ async create(ctx,next){
 //寫入申請人填寫資料
 async create1(ctx,next){
   var new_case = new Case(ctx.request.body);
-  var new_progress=new Progress();
+    var personID=ctx.params.id;
+    console.log("got personID:"+personID);
+    var account, caseID;
   console.log("got new_case:"+new_case.a15casename);
-  await new_case.save()
-  .then(()=>{
-      console.log("Saving new_case....")
-      statusreport="儲存申請案資料後回到本頁";
-      ctx.redirect("/base4dcarbon/branch/app4applicant?statusreport="+statusreport)
+  await User.findOne({a10personID:personID})
+    .then(userx=>{
+      account=userx.a15account
     })
+    .catch((err)=>{
+      console.log("User.findOne() failed !!")
+      console.log(err)
+    })
+  await new_case.save()
+  .then(async casex=>{
+      console.log("Saving new_case....");
+          caseID=casex._id;
+          console.log("got casexID:"+caseID)
+          let new_progress=new Progress({
+          a05caseID:caseID,
+          a10stage:"filed",
+          a15when:Date.now(),
+          a99footnote:"auto create"
+          })
+          await new_progress.save()
+            .then(async ()=>{
+              console.log("Saving new_progress....");
+              statusreport="儲存申請案資料及新進度後回到本頁";
+              await ctx.redirect("/base4dcarbon/branch/app4applicant/"+account+"?statusreport="+statusreport)
+            })
+            .catch((err)=>{
+              console.log("Progress.save() failed !!")
+              console.log(err)
+           })
+          })
   .catch((err)=>{
       console.log("Case.save() failed !!")
       console.log(err)

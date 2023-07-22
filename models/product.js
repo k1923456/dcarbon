@@ -17,7 +17,7 @@ var ProductSchema = new Schema(
 ProductSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/poduct/' + this._id;
+  return '/poduct/' + this._id;
 });
 ProductSchema.set("toJSON",{getters:true,virtual:true});
 ProductSchema.set("toObject",{getters:true,virtual:true});

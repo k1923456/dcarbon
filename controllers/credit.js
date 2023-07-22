@@ -3,7 +3,7 @@ const Credit = require('../models/index').credit;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/credit !!");
+    console.log("found route /credit !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Credit.find({}).then(async credits=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_credit....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/credit/?statusreport="+statusreport)
+    ctx.redirect("/credit/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Credit.save() failed !!")
@@ -188,7 +188,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成credit批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -209,7 +209,7 @@ async destroy(ctx,next){
         console.log("Deleted a credit....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/credit/?statusreport="+statusreport)
+    ctx.redirect("/credit/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Credit.deleteOne() failed !!")
@@ -226,7 +226,7 @@ async update(ctx,next){
     .then((newcredit)=>{
         console.log("Saving new_credit....:"+newcredit);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/credit/?statusreport="+statusreport)
+    ctx.redirect("/credit/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Credit.findOneAndUpdate() failed !!")

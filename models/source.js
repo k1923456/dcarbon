@@ -15,7 +15,7 @@ var SourceSchema = new Schema(
 SourceSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/source/' + this._id;
+  return '/source/' + this._id;
 });
 SourceSchema.set("toJSON",{getters:true,virtual:true});
 SourceSchema.set("toObject",{getters:true,virtual:true});

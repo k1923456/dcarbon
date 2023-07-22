@@ -8,7 +8,7 @@ const User = require('../models/index').user;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/case !!");
+    console.log("found route /case !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Case.find({}).then(async cases=>{
@@ -153,7 +153,7 @@ async create(ctx,next){
         console.log("Saving new_case....");
 
         statusreport="儲存單筆申請案資料後進入本頁";
-        ctx.redirect("/base4dcarbon/case/?statusreport="+statusreport)
+        ctx.redirect("/case/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Case.save() failed !!")
@@ -190,7 +190,7 @@ async create1(ctx,next){
             .then(async ()=>{
               console.log("Saving new_progress....");
               statusreport="儲存申請案資料及新進度後回到本頁";
-              await ctx.redirect("/base4dcarbon/branch/app4applicant/"+account+"?statusreport="+statusreport)
+              await ctx.redirect("/branch/app4applicant/"+account+"?statusreport="+statusreport)
             })
             .catch((err)=>{
               console.log("Progress.save() failed !!")
@@ -297,7 +297,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成case批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -318,7 +318,7 @@ async destroy(ctx,next){
         console.log("Deleted a case....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/case/?statusreport="+statusreport)
+    ctx.redirect("/case/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Case.deleteOne() failed !!")
@@ -335,7 +335,7 @@ async update(ctx,next){
     .then((newcase)=>{
         console.log("Saving new_case....:"+newcase);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/case/?statusreport="+statusreport)
+    ctx.redirect("/case/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Case.findOneAndUpdate() failed !!")

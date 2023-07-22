@@ -4,7 +4,7 @@ const Term = require('../models/index').term;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/user !!");
+    console.log("found route /user !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await User.find({}).then(async users=>{
@@ -110,7 +110,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_user....");
     statusreport="儲存單筆人使用者帳戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/user/?statusreport="+statusreport)
+    ctx.redirect("/user/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("User.save() failed !!")
@@ -206,7 +206,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成user批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -227,7 +227,7 @@ async destroy(ctx,next){
         console.log("Deleted a user....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/user/?statusreport="+statusreport)
+    ctx.redirect("/user/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("User.deleteOne() failed !!")
@@ -244,7 +244,7 @@ async update(ctx,next){
     .then((newuser)=>{
         console.log("Saving new_user....:"+newuser);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/user/?statusreport="+statusreport)
+    ctx.redirect("/user/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("User.findOneAndUpdate() failed !!")

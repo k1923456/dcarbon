@@ -17,7 +17,7 @@ var UserSchema = new Schema(
 UserSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/user/' + this._id;
+  return '/user/' + this._id;
 });
 UserSchema.set("toJSON",{getters:true,virtual:true});
 UserSchema.set("toObject",{getters:true,virtual:true});

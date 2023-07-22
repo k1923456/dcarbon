@@ -25,7 +25,7 @@ var CreditSchema = new Schema(
 CreditSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/credit/' + this._id;
+  return '/credit/' + this._id;
 });
 CreditSchema.set("toJSON",{getters:true,virtual:true});
 CreditSchema.set("toObject",{getters:true,virtual:true});

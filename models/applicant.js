@@ -20,7 +20,7 @@ var ApplicantSchema = new Schema(
 ApplicantSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/applicant/' + this._id;
+  return '/applicant/' + this._id;
 });
 ApplicantSchema.set("toJSON",{getters:true,virtual:true});
 ApplicantSchema.set("toObject",{getters:true,virtual:true});

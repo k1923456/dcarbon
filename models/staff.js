@@ -26,7 +26,7 @@ var StaffSchema = new Schema(
 StaffSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/staff/' + this._id;
+  return '/staff/' + this._id;
 });
 StaffSchema.set("toJSON",{getters:true,virtual:true});
 StaffSchema.set("toObject",{getters:true,virtual:true});

@@ -22,7 +22,7 @@ var LoyalistSchema = new Schema(
 LoyalistSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/loyalist/' + this._id;
+  return '/loyalist/' + this._id;
 });
 LoyalistSchema.set("toJSON",{getters:true,virtual:true});
 LoyalistSchema.set("toObject",{getters:true,virtual:true});

@@ -17,7 +17,7 @@ var DataneedSchema = new Schema(
 DataneedSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/dataneed/' + this._id;
+  return '/dataneed/' + this._id;
 });
 DataneedSchema.set("toJSON",{getters:true,virtual:true});
 DataneedSchema.set("toObject",{getters:true,virtual:true});

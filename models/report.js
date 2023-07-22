@@ -20,7 +20,7 @@ var ReportSchema = new Schema(
 ReportSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/report/' + this._id;
+  return '/report/' + this._id;
 });
 ReportSchema.set("toJSON",{getters:true,virtual:true});
 ReportSchema.set("toObject",{getters:true,virtual:true});

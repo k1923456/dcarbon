@@ -21,7 +21,7 @@ var CoefficientSchema = new Schema(
 CoefficientSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/coefficient/' + this._id;
+  return '/coefficient/' + this._id;
 });
 CoefficientSchema.set("toJSON",{getters:true,virtual:true});
 CoefficientSchema.set("toObject",{getters:true,virtual:true});

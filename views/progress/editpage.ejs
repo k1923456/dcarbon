@@ -42,7 +42,7 @@ body {
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/base4dcarbon/progress">{{lastpage}}</a>
+              <a class="nav-link" href="/progress">{{lastpage}}</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="#">{{edit1}} <span class="sr-only">(current)</span></a>
@@ -63,7 +63,7 @@ body {
         <div class="card-body">
           <h5 class="card-title">修正{{progress.a25code}}之對照資料</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{card_subtitle}}</h6>
-          <form action="/base4dcarbon/progress/update" method="post">
+          <form action="/progress/update" method="post">
             <div class="form-group" :key="inputerUIkey">
             <label for="formGroupExampleInput2">{{items.item}}</label>
             <input type="text" name="_id" class="form-control" id="formGroupExampleInput" :value="progress._id">

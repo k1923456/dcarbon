@@ -18,7 +18,7 @@ var UserrightSchema = new Schema(
 UserrightSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/userright/' + this._id;
+  return '/userright/' + this._id;
 });
 UserrightSchema.set("toJSON",{getters:true,virtual:true});
 UserrightSchema.set("toObject",{getters:true,virtual:true});

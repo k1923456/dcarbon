@@ -21,7 +21,7 @@ var AwardSchema = new Schema(
 AwardSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/award/' + this._id;
+  return '/award/' + this._id;
 });
 AwardSchema.set("toJSON",{getters:true,virtual:true});
 AwardSchema.set("toObject",{getters:true,virtual:true});

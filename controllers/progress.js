@@ -3,7 +3,7 @@ const Progress = require('../models/index').progress;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/progress !!");
+    console.log("found route /progress !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Progress.find({}).then(async progresss=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_progress....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/progress/?statusreport="+statusreport)
+    ctx.redirect("/progress/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Progress.save() failed !!")
@@ -99,7 +99,7 @@ async create0(ctx,next){
   .then(()=>{
       console.log("Saving new_progress....");
   statusreport="儲存單筆客戶資料後進入本頁";
-  ctx.redirect("/base4dcarbon/progress/?statusreport="+statusreport)
+  ctx.redirect("/progress/?statusreport="+statusreport)
   })
   .catch((err)=>{
       console.log("Progress.save() failed !!")
@@ -193,7 +193,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成progress批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -214,7 +214,7 @@ async destroy(ctx,next){
         console.log("Deleted a progress....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/progress/?statusreport="+statusreport)
+    ctx.redirect("/progress/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Progress.deleteOne() failed !!")
@@ -231,7 +231,7 @@ async update(ctx,next){
     .then((newprogress)=>{
         console.log("Saving new_progress....:"+newprogress);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/progress/?statusreport="+statusreport)
+    ctx.redirect("/progress/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Progress.findOneAndUpdate() failed !!")

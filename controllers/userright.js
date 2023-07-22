@@ -3,7 +3,7 @@ const Userright = require('../models/index').userright;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/userright !!");
+    console.log("found route /userright !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Userright.find({}).then(async userrights=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_userright....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/userright/?statusreport="+statusreport)
+    ctx.redirect("/userright/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Userright.save() failed !!")
@@ -182,7 +182,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成userright批次輸入";
         await ctx.render("innerweb/datamanage",{
@@ -203,7 +203,7 @@ async destroy(ctx,next){
         console.log("Deleted a userright....");
     statusreport="刪除單筆userright後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/userright/?statusreport="+statusreport)
+    ctx.redirect("/userright/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Userright.deleteOne() failed !!")
@@ -220,7 +220,7 @@ async update(ctx,next){
     .then((newuserright)=>{
         console.log("Saving new_userright....:"+newuserright);
     statusreport="更新單筆userright後進入本頁";
-    ctx.redirect("/base4dcarbon/userright/?statusreport="+statusreport)
+    ctx.redirect("/userright/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Userright.findOneAndUpdate() failed !!")

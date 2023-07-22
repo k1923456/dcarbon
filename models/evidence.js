@@ -20,7 +20,7 @@ var EvidenceSchema = new Schema(
 EvidenceSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/evidence/' + this._id;
+  return '/evidence/' + this._id;
 });
 EvidenceSchema.set("toJSON",{getters:true,virtual:true});
 EvidenceSchema.set("toObject",{getters:true,virtual:true});

@@ -48,7 +48,7 @@ async actionplan(ctx, next){
 },
 //到知識管理
 async KM(ctx, next){
-    console.log("found route /base4dcarbon/knowledge !!");
+    console.log("found route /knowledge !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
 
@@ -98,64 +98,64 @@ async datamanage(ctx, next){
     console.log("進入controller的datamanage");
     statusreport="以資料管理權限進入本頁";
     var tablesjson=[
-      {"route":"/base4dcarbon/user",
+      {"route":"/user",
       "label":"使用者帳戶資料表維管"
       },
-      {"route":"/base4dcarbon/userright",
+      {"route":"/userright",
       "label":"使用者權限資料表維管"
       },
-      {"route":"/base4dcarbon/staff",
+      {"route":"/staff",
       "label":"團隊人員資料表維管"
       },
-      {"route":"/base4dcarbon/applicant",
+      {"route":"/applicant",
       "label":"認證申請人資料表維管"
       },
-      {"route":"/base4dcarbon/loyalist",
+      {"route":"/loyalist",
       "label":"淨零義士資料表維管"
       },
-      {"route":"/base4dcarbon/product",
+      {"route":"/product",
       "label":"申請碳權產品資料表維管"
       },
-      {"route":"/base4dcarbon/activity",
+      {"route":"/activity",
       "label":"減碳或增匯活動資料表維管"
       },
-      {"route":"/base4dcarbon/subact",
+      {"route":"/subact",
       "label":"減碳或增匯細部活動資料表維管"
       },
-      {"route":"/base4dcarbon/input",
+      {"route":"/input",
       "label":"細部活動投入資料表維管"
       },
-      {"route":"/base4dcarbon/coefficient",
+      {"route":"/coefficient",
       "label":"細部活動碳排係數資料表維管"
       },
-      {"route":"/base4dcarbon/method",
+      {"route":"/method",
       "label":"認驗證方法資料表維管"
       },
-      {"route":"/base4dcarbon/dataneed",
+      {"route":"/dataneed",
       "label":"驗證所需提供資料表維管"
       },
-      {"route":"/base4dcarbon/case",
+      {"route":"/case",
       "label":"申請案場資料表維管"
       },
-      {"route":"/base4dcarbon/progress",
+      {"route":"/progress",
       "label":"申請案件進度表資料表維管"
       },
-      {"route":"/base4dcarbon/evidence",
+      {"route":"/evidence",
       "label":"上傳佐證資料表維管"
       },
-      {"route":"/base4dcarbon/report",
+      {"route":"/report",
       "label":"驗證報告資料表維管"
       },
-      {"route":"/base4dcarbon/credit",
+      {"route":"/credit",
       "label":"公評碳權管理資料表維管"
       },
-      {"route":"/base4dcarbon/award",
+      {"route":"/award",
       "label":"公評點數資料表維管"
       },
-      {"route":"/base4dcarbon/source",
+      {"route":"/source",
       "label":"資料來源資料表維管"
       },
-      {"route":"/base4dcarbon/term",
+      {"route":"/term",
       "label":"名詞對照資料表維管"
       }
       ];

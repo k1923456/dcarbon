@@ -19,6 +19,7 @@ console.log('資料庫URL:'+`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}
 console.log('連線資料庫中。。。');
 const DATABASEURL=`mongodb+srv://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_HOST}/${process.env.MONGO_INITDB_ROOT_DATABASE1}?retryWrites=true&w=majority`;
 //const DATABASEURL=`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_HOST}:27017/${process.env.MONGO_INITDB_ROOT_DATABASE1}?authSource=admin`;
+console.log(DATABASEURL)
 mongoose.connect(DATABASEURL,{
 //useNewUrlPaser: true,
 //useUnifieldTopology:true

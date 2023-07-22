@@ -55,7 +55,7 @@ for(var key in otherRouters) {
 	let temp=key+"temp";
         temp=new koarouter();
         temp =otherRouters[key];
-        router.use('/base4dcarbon/'+key, temp.routes(), temp.allowedMethods());
+        router.use('/'+key, temp.routes(), temp.allowedMethods());
 }
 app.use(router.routes()).use(router.allowedMethods());
 

@@ -3,7 +3,7 @@ const Product = require('../models/index').product;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/product !!");
+    console.log("found route /product !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Product.find({}).then(async products=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_product....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/product/?statusreport="+statusreport)
+    ctx.redirect("/product/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Product.save() failed !!")
@@ -180,7 +180,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage.ejs");
         statusreport="完成product批次輸入";
         await ctx.render("innerweb/datamanage",{
@@ -201,7 +201,7 @@ async destroy(ctx,next){
         console.log("Deleted a product....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/product/?statusreport="+statusreport)
+    ctx.redirect("/product/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Product.deleteOne() failed !!")
@@ -218,7 +218,7 @@ async update(ctx,next){
     .then((newproduct)=>{
         console.log("Saving new_product....:"+newproduct);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/product/?statusreport="+statusreport)
+    ctx.redirect("/product/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Product.findOneAndUpdate() failed !!")

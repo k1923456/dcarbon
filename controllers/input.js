@@ -3,7 +3,7 @@ const Input = require('../models/index').input;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/input !!");
+    console.log("found route /input !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Input.find({}).then(async inputs=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_input....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/input/?statusreport="+statusreport)
+    ctx.redirect("/input/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Input.save() failed !!")
@@ -180,7 +180,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成input批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -201,7 +201,7 @@ async destroy(ctx,next){
         console.log("Deleted a input....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/input/?statusreport="+statusreport)
+    ctx.redirect("/input/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Input.deleteOne() failed !!")
@@ -218,7 +218,7 @@ async update(ctx,next){
     .then((newinput)=>{
         console.log("Saving new_input....:"+newinput);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/input/?statusreport="+statusreport)
+    ctx.redirect("/input/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Input.findOneAndUpdate() failed !!")

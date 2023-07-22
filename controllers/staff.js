@@ -4,7 +4,7 @@ const Term = require('../models/index').term;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/staff !!");
+    console.log("found route /staff !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Staff.find({}).then(async staffs=>{
@@ -110,7 +110,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_staff....");
     statusreport="儲存單筆團隊成員資料後進入本頁";
-    ctx.redirect("/base4dcarbon/staff/?statusreport="+statusreport)
+    ctx.redirect("/staff/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Staff.save() failed !!")
@@ -216,7 +216,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成staff批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -237,7 +237,7 @@ async destroy(ctx,next){
         console.log("Deleted a staff....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/staff/?statusreport="+statusreport)
+    ctx.redirect("/staff/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Staff.deleteOne() failed !!")
@@ -254,7 +254,7 @@ async update(ctx,next){
     .then((newstaff)=>{
         console.log("Saving new_staff....:"+newstaff);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/staff/?statusreport="+statusreport)
+    ctx.redirect("/staff/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Staff.findOneAndUpdate() failed !!")

@@ -20,7 +20,7 @@ var MethodSchema = new Schema(
 MethodSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/method/' + this._id;
+  return '/method/' + this._id;
 });
 MethodSchema.set("toJSON",{getters:true,virtual:true});
 MethodSchema.set("toObject",{getters:true,virtual:true});

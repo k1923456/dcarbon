@@ -3,7 +3,7 @@ const Evidence = require('../models/index').evidence;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/evidence !!");
+    console.log("found route /evidence !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Evidence.find({}).then(async evidences=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_evidence....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/evidence/?statusreport="+statusreport)
+    ctx.redirect("/evidence/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Evidence.save() failed !!")
@@ -184,7 +184,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成evidence批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -205,7 +205,7 @@ async destroy(ctx,next){
         console.log("Deleted a evidence....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/evidence/?statusreport="+statusreport)
+    ctx.redirect("/evidence/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Evidence.deleteOne() failed !!")
@@ -222,7 +222,7 @@ async update(ctx,next){
     .then((newevidence)=>{
         console.log("Saving new_evidence....:"+newevidence);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/evidence/?statusreport="+statusreport)
+    ctx.redirect("/evidence/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Evidence.findOneAndUpdate() failed !!")

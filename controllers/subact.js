@@ -3,7 +3,7 @@ const Subact = require('../models/index').subact;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/subact !!");
+    console.log("found route /subact !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Subact.find({}).then(async subacts=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_subact....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/subact/?statusreport="+statusreport)
+    ctx.redirect("/subact/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Subact.save() failed !!")
@@ -180,7 +180,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成subact批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -201,7 +201,7 @@ async destroy(ctx,next){
         console.log("Deleted a subact....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/subact/?statusreport="+statusreport)
+    ctx.redirect("/subact/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Subact.deleteOne() failed !!")
@@ -218,7 +218,7 @@ async update(ctx,next){
     .then((newsubact)=>{
         console.log("Saving new_subact....:"+newsubact);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/subact/?statusreport="+statusreport)
+    ctx.redirect("/subact/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Subact.findOneAndUpdate() failed !!")

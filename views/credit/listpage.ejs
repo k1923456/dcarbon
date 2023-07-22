@@ -51,19 +51,19 @@ background-color: rgb(205, 226, 253);
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/base4dcarbon/briefing/">{{introduction}}</a>
+                <a class="nav-link" href="/briefing/">{{introduction}}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/base4dcarbon/innerweb/datamanage">{{otherdata}}</a>
+                <a class="nav-link" href="/innerweb/datamanage">{{otherdata}}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/base4dcarbon/">{{entry}}</a>
+                <a class="nav-link" href="/">{{entry}}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link  active" href="#">{{modeltype}}<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/base4dcarbon/role/">{{startuse}}</a>
+                  <a class="nav-link" href="/role/">{{startuse}}</a>
           </ul>
           <span class="navbar-text">
             <font size="1">{{statusreport}}</font>
@@ -77,13 +77,13 @@ background-color: rgb(205, 226, 253);
           <table>
             <tr>
             <td>
-            <form  action="/base4dcarbon/credit/inputpage" method="get" >
+            <form  action="/credit/inputpage" method="get" >
             <input type="hidden" name="statusreport" value="由單筆手動新增按鈕進來">
             <input type="submit" value="單筆手動新增">
             </form>
             </td>
             <td>
-              <form  action="/base4dcarbon/credit/inputbatch" method="get" >
+              <form  action="/credit/inputbatch" method="get" >
              資料主檔名：<input type="text" name="datafile" required>
              <input type="hidden" name="statusreport" value="由批次新增進入本頁">
              <input type="submit" value="批次新增">
@@ -272,12 +272,12 @@ background-color: rgb(205, 226, 253);
       methods:{
         editone:function(id){
           let querytext="?statusreport='由credit資料清單頁的編輯按鈕進入本頁'";
-          let url2='/base4dcarbon/credit/editpage/'+id+querytext;
+          let url2='/credit/editpage/'+id+querytext;
           window.location=url2;
         },
         deleteone:function(id){
           let querytext="?statusreport='由credit資料清單頁的刪除按鈕進入本頁'";
-          let url3='/base4dcarbon/credit/delete/'+id+querytext;
+          let url3='/credit/delete/'+id+querytext;
           window.location=url3
            },
 

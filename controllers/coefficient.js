@@ -3,7 +3,7 @@ const Coefficient = require('../models/index').coefficient;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/coefficient !!");
+    console.log("found route /coefficient !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Coefficient.find({}).then(async coefficients=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_coefficient....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/coefficient/?statusreport="+statusreport)
+    ctx.redirect("/coefficient/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Coefficient.save() failed !!")
@@ -185,7 +185,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成coefficient批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -206,7 +206,7 @@ async destroy(ctx,next){
         console.log("Deleted a coefficient....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/coefficient/?statusreport="+statusreport)
+    ctx.redirect("/coefficient/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Coefficient.deleteOne() failed !!")
@@ -223,7 +223,7 @@ async update(ctx,next){
     .then((newcoefficient)=>{
         console.log("Saving new_coefficient....:"+newcoefficient);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/coefficient/?statusreport="+statusreport)
+    ctx.redirect("/coefficient/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Coefficient.findOneAndUpdate() failed !!")

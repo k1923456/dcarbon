@@ -3,7 +3,7 @@ const Applicant = require('../models/index').applicant;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/applicant !!");
+    console.log("found route /applicant !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Applicant.find({}).then(async applicants=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_applicant....");
     statusreport="儲存單筆客戶資料後進入本頁";
-    ctx.redirect("/base4dcarbon/applicant/?statusreport="+statusreport)
+    ctx.redirect("/applicant/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Applicant.save() failed !!")
@@ -183,7 +183,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成applicant批次輸入";
         await ctx.render("innerweb/datamanage/datamanagetemp",{
@@ -204,7 +204,7 @@ async destroy(ctx,next){
         console.log("Deleted a applicant....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/applicant/?statusreport="+statusreport)
+    ctx.redirect("/applicant/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Applicant.deleteOne() failed !!")
@@ -221,7 +221,7 @@ async update(ctx,next){
     .then((newapplicant)=>{
         console.log("Saving new_applicant....:"+newapplicant);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/applicant/?statusreport="+statusreport)
+    ctx.redirect("/applicant/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Applicant.findOneAndUpdate() failed !!")

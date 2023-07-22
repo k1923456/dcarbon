@@ -17,7 +17,7 @@ var InputSchema = new Schema(
 InputSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/Input/' + this._id;
+  return '/Input/' + this._id;
 });
 InputSchema.set("toJSON",{getters:true,virtual:true});
 InputSchema.set("toObject",{getters:true,virtual:true});

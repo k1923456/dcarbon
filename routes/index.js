@@ -18,7 +18,7 @@ fs.readdirSync(__dirname)
         (file.slice(-3) === '.js'))
     .forEach((file) => {
     	const fileName = file.replace('.js','');
-        //console.log("got fileName:"+fileName);
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAA got fileName:"+fileName);
         let route= require('./'+fileName);
         allRoutes[fileName] = route;
     });

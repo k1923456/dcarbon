@@ -22,7 +22,7 @@ var CaseSchema = new Schema(
 CaseSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/case/' + this._id;
+  return '/case/' + this._id;
 });
 CaseSchema.set("toJSON",{getters:true,virtual:true});
 CaseSchema.set("toObject",{getters:true,virtual:true});

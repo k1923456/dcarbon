@@ -18,7 +18,7 @@ var SubactSchema = new Schema(
 SubactSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/subact/' + this._id;
+  return '/subact/' + this._id;
 });
 SubactSchema.set("toJSON",{getters:true,virtual:true});
 SubactSchema.set("toObject",{getters:true,virtual:true});

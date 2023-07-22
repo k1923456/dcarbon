@@ -3,7 +3,7 @@ const Term = require('../models/index').term;
 module.exports = {
 //列出清單list(req,res)
 async list(ctx,next){
-    console.log("found route /base4dcarbon/term !!");
+    console.log("found route /term !!");
     var statusreport=ctx.query.statusreport;
     console.log("gotten query:"+statusreport);
     await Term.find({}).then(async terms=>{
@@ -84,7 +84,7 @@ async create(ctx,next){
     .then(()=>{
         console.log("Saving new_term....");
     statusreport="儲存單筆term資料後進入本頁";
-    ctx.redirect("/base4dcarbon/term/?statusreport="+statusreport)
+    ctx.redirect("/term/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Term.save() failed !!")
@@ -181,7 +181,7 @@ async batchinput(ctx, next){
     })
     .then(async ()=>{
         //console.log("going to list prject....");
-        //ctx.redirect("/base4dcarbon/project/?statusreport="+statusreport)
+        //ctx.redirect("/project/?statusreport="+statusreport)
         console.log("go back to datamanage1.ejs");
         statusreport="完成term批次輸入";
         await ctx.render("innerweb/datamanage",{
@@ -202,7 +202,7 @@ async destroy(ctx,next){
         console.log("Deleted a term....");
     statusreport="刪除單筆名詞對照後進入本頁";
     //ctx.res.end()
-    ctx.redirect("/base4dcarbon/term/?statusreport="+statusreport)
+    ctx.redirect("/term/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Term.deleteOne() failed !!")
@@ -219,7 +219,7 @@ async update(ctx,next){
     .then((newterm)=>{
         console.log("Saving new_term....:"+newterm);
     statusreport="更新單筆名詞對照後進入本頁";
-    ctx.redirect("/base4dcarbon/term/?statusreport="+statusreport)
+    ctx.redirect("/term/?statusreport="+statusreport)
     })
     .catch((err)=>{
         console.log("Term.findOneAndUpdate() failed !!")

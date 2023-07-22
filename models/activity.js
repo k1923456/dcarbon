@@ -16,7 +16,7 @@ var ActivitySchema = new Schema(
 ActivitySchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/activity/' + this._id;
+  return '/activity/' + this._id;
 });
 ActivitySchema.set("toJSON",{getters:true,virtual:true});
 ActivitySchema.set("toObject",{getters:true,virtual:true});

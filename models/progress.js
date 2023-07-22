@@ -15,7 +15,7 @@ var ProgressSchema = new Schema(
 ProgressSchema
 .virtual('url')
 .get(function () {
-  return '/base4dcarbon/progress/' + this._id;
+  return '/progress/' + this._id;
 });
 ProgressSchema.set("toJSON",{getters:true,virtual:true});
 ProgressSchema.set("toObject",{getters:true,virtual:true});
